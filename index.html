@@ -4,22 +4,13 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content="RGE Systems Inc. — Independent engineering consulting practice focused on high-reliability hardware systems for safety-critical applications."/>
-  <title>RGE Systems Inc. — High-Reliability Engineering</title>
+  <title>RGE Systems Inc.</title>
 
   <style>
     :root{
       --text:#e8eefc;
       --muted:#a9b4cc;
-      --line:rgba(255,255,255,.10);
-
-      /* bluish / greenish accents */
-      --blue:#7AA2FF;
-      --teal:#66E3C4;
-
-      /* CTA button */
-      --cta1: rgba(122,162,255,.95);
-      --cta2: rgba(102,227,196,.90);
-      --ctaText:#09101e;
+      --line:rgba(255,255,255,.14);
 
       --shadow: 0 18px 55px rgba(0,0,0,.35);
       --radius:18px;
@@ -28,15 +19,14 @@
       --max:1120px;
       --containerMax:980px;
 
-      /* KEY: Logo height = Wordmark height */
-      --brandH:38px;     /* logo height */
-      --brandFont:38px;  /* wordmark size */
+      /* header geometry */
+      --brandH:38px;
+      --brandFont:38px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
 
-    /* Smooth background */
     body{
       margin:0;
       font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -53,7 +43,7 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
 
-    /* TOP BAR */
+    /* HEADER */
     .topbar{
       display:flex;
       align-items:flex-start;
@@ -62,10 +52,8 @@
       padding:10px 0 18px;
     }
 
-    /* Brand stack is shrink-to-content so tagline width always equals logo+wordmark width */
-    .brandStack{
-      display:inline-block; /* critical for width equality */
-    }
+    /* Brand stack shrinks to content so tagline matches width */
+    .brandStack{display:inline-block}
     .brandRow{
       display:flex;
       align-items:center;
@@ -73,56 +61,38 @@
       width:fit-content;
     }
 
-    /* Stock/placeholder logo */
-    .mark{
+    /* OPTION A LOGO — ALL WHITE */
+    .logo{
       width:var(--brandH);
       height:var(--brandH);
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:linear-gradient(135deg, rgba(122,162,255,.22), rgba(102,227,196,.16));
-      position:relative;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
       flex:0 0 auto;
     }
-    .mark:before{
-      content:"";
-      position:absolute;
-      inset:7px 9px;
-      border-radius:9px;
-      border:1px solid rgba(255,255,255,.14);
-    }
 
-    /* Wordmark: same height as logo */
     .brandTitle{
       height:var(--brandH);
       display:flex;
       align-items:center;
-      font-weight:650;
-      letter-spacing:.2px;
       font-size:var(--brandFont);
-      line-height:var(--brandH); /* keeps vertical rhythm tight */
+      font-weight:650;
+      line-height:var(--brandH);
       white-space:nowrap;
+      letter-spacing:.2px;
     }
 
-    /* Tagline matches width of brandRow because it’s inside brandStack */
     .tagline{
       margin-top:6px;
       width:100%;
       color:var(--muted);
       font-size:13px;
       letter-spacing:.02em;
-      text-align:left;
     }
 
-    /* NAV */
     .nav{
       margin-left:auto;
       display:flex;
       gap:12px;
-      color:var(--muted);
       font-size:14px;
-      justify-content:flex-end;
-      flex-wrap:wrap;
+      color:var(--muted);
       align-items:center;
       padding-top:6px;
     }
@@ -133,13 +103,12 @@
     }
     .nav a:hover{border-color:var(--line); color:var(--text)}
 
-    /* Shared container width */
+    /* Shared containers */
     .sectionWrap{margin-top:18px; display:flex; justify-content:center}
     .container{width:100%; max-width:var(--containerMax)}
 
     /* HERO */
     .hero{
-      position:relative;
       border-radius:var(--radius2);
       border:1px solid var(--line);
       background:
@@ -148,18 +117,8 @@
         radial-gradient(780px 360px at 86% 30%, rgba(102,227,196,.11), transparent 62%),
         rgba(10,14,22,.70);
       box-shadow:var(--shadow);
-      overflow:hidden;
     }
-    .hero:after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(circle at 16% 35%, rgba(255,255,255,.07) 0 1px, transparent 2px) 0 0/14px 14px;
-      opacity:.18;
-      pointer-events:none;
-      mask-image: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,0));
-    }
-    .heroInner{position:relative; padding:52px 26px 42px}
+    .heroInner{padding:52px 26px 42px}
 
     h1{margin:0 0 12px; font-size:42px; line-height:1.1; letter-spacing:-.6px}
     .lead{margin:0; color:var(--muted); font-size:17px}
@@ -173,8 +132,7 @@
       box-shadow:0 18px 45px rgba(0,0,0,.22);
       padding:18px;
     }
-    .sectionTitle{margin:0 0 10px; font-size:18px; letter-spacing:-.2px}
-    .muted{color:var(--muted)}
+    .sectionTitle{margin:0 0 10px; font-size:18px}
     .list{margin:10px 0 0 18px; color:var(--muted)}
     .list li{margin:8px 0}
 
@@ -190,21 +148,24 @@
       align-items:center;
       flex-wrap:wrap;
     }
-    .btn{
+
+    /* White envelope button */
+    .mailBtn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
       padding:10px 14px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background:linear-gradient(135deg,var(--cta1),var(--cta2));
-      color:var(--ctaText);
-      font-weight:750;
-      box-shadow: 0 16px 40px rgba(122,162,255,.14);
+      background:#ffffff;
+      border:1px solid #ffffff;
+      cursor:pointer;
     }
-    .btn:hover{filter:brightness(1.02) saturate(1.05)}
-    .iconMail{width:18px; height:18px; display:block}
+
+    .mailBtn svg{
+      width:22px;   /* slightly larger envelope */
+      height:22px;
+      stroke:#000000;
+    }
 
     .footer{
       margin-top:18px;
@@ -212,16 +173,15 @@
       font-size:13px;
       display:flex;
       justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
       max-width:var(--containerMax);
       margin-left:auto;
       margin-right:auto;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     @media (max-width: 980px){
       h1{font-size:34px}
-      .heroInner{padding:46px 18px 36px}
       .topbar{flex-direction:column; align-items:stretch}
       .nav{margin-left:0; justify-content:flex-start}
       .brandTitle{font-size:32px}
@@ -234,16 +194,25 @@
   <div class="wrap">
 
     <!-- HEADER -->
-    <div class="topbar" id="top">
-      <div class="brandStack" aria-label="RGE Systems Inc. branding">
+    <div class="topbar">
+      <div class="brandStack">
         <div class="brandRow">
-          <div class="mark" aria-hidden="true"></div>
+          <!-- OPTION A LOGO -->
+          <svg class="logo" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="35" height="35" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+            <rect x="6" y="6"  width="26" height="6" fill="#FFFFFF"/>
+            <rect x="6" y="14" width="16" height="6" fill="#FFFFFF"/>
+            <rect x="24" y="14" width="8"  height="6" fill="#FFFFFF"/>
+            <rect x="6" y="22" width="10" height="6" fill="#FFFFFF"/>
+            <rect x="18" y="22" width="14" height="6" fill="#FFFFFF"/>
+          </svg>
+
           <div class="brandTitle">RGE Systems Inc.</div>
         </div>
         <div class="tagline">Where real-world needs meet innovation</div>
       </div>
 
-      <nav class="nav" aria-label="Primary navigation">
+      <nav class="nav">
         <a href="#about">About</a>
         <a href="#services">Core areas</a>
         <a href="#engage">How we engage</a>
@@ -290,9 +259,8 @@
     <div class="sectionWrap" id="engage">
       <section class="panel container">
         <h2 class="sectionTitle">How we engage</h2>
-        <p class="muted" style="margin:0;">
-          RGE Systems operates as a flexible platform for selective consulting, fractional technical engagement,
-          technology development, and venture initiatives.
+        <p class="muted">
+          Please include a brief description of the problem, key constraints, and the type of support required.
         </p>
       </section>
     </div>
@@ -301,14 +269,14 @@
     <div class="sectionWrap">
       <section class="contact container" id="contact">
         <div>
-          <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
-          <div class="muted">Please include a brief description of the problem, key constraints, and the type of support required.</div>
+          <b>Contact</b><br/>
+          <span class="muted">Please include a brief description of the problem, key constraints, and the type of support required.</span>
         </div>
 
-        <a class="btn" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry" aria-label="Email RGE Systems Inc.">
-          <svg class="iconMail" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="#09101e" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="#09101e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <a class="mailBtn" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inquiry" aria-label="Email RGE Systems Inc.">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke-width="2"/>
+            <path d="M3 7l9 6 9-6" stroke-width="2"/>
           </svg>
         </a>
       </section>
@@ -316,10 +284,9 @@
 
     <div class="footer">
       <div>© <span id="y"></span> RGE Systems Inc.</div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="#top" style="color:inherit; text-decoration:none;">Back to top</a>
-        <span>•</span>
-        <a href="mailto:YOUR_EMAIL" style="color:inherit; text-decoration:none;">YOUR_EMAIL</a>
+      <div>
+        <a href="#top">Back to top</a> ·
+        <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
       </div>
     </div>
 
