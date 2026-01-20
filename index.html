@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="RGE Systems Inc. — Engineering advisory and contract delivery for mission-critical systems. Design reviews, reliability, integration, and execution support."/>
-  <title>RGE Systems Inc. — Engineering Advisory & Contract Delivery</title>
+  <meta name="description" content="RGE Systems Inc. — Independent engineering consulting practice focused on high-reliability hardware systems for safety-critical applications."/>
+  <title>RGE Systems Inc. — High-Reliability Engineering</title>
 
   <style>
     :root{
@@ -15,11 +15,11 @@
       --muted:#a9b4cc;
       --line:rgba(255,255,255,.10);
 
-      /* Your existing vibe */
+      /* bluish accents consistent with your prior HTML */
       --blue:#7AA2FF;
       --blue2:#66E3C4;
 
-      /* “Cuesta-like” CTA accent (warm gold, modest) */
+      /* modest “consulting CTA” warm accent */
       --cta:#f4c84f;
       --ctaText:#1a1f2b;
 
@@ -40,15 +40,18 @@
         radial-gradient(900px 520px at 88% 28%, rgba(102,227,196,.14), transparent 55%),
         var(--bg);
     }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
+
+    /* top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
       padding:10px 0 18px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width:240px;
+      min-width:260px;
     }
     .mark{
       width:40px; height:28px; border-radius:10px;
@@ -84,6 +87,7 @@
       border:1px solid var(--line);
       background:rgba(255,255,255,.04);
       font-weight:650;
+      white-space:nowrap;
     }
     .btn:hover{border-color:rgba(255,255,255,.22)}
     .btn.cta{
@@ -93,11 +97,9 @@
       box-shadow: 0 16px 40px rgba(244,200,79,.18);
     }
     .btn.cta:hover{filter:brightness(1.03)}
-    .btn.ghost{
-      background:rgba(255,255,255,.02);
-    }
+    .btn.ghost{background:rgba(255,255,255,.02)}
 
-    /* HERO */
+    /* hero */
     .hero{
       position:relative;
       border-radius:var(--radius2);
@@ -110,19 +112,18 @@
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-    /* subtle “consulting hero” texture */
     .hero:after{
       content:"";
       position:absolute; inset:0;
       background:
         radial-gradient(circle at 16% 35%, rgba(255,255,255,.08) 0 1px, transparent 2px) 0 0/14px 14px;
-      opacity:.25;
+      opacity:.22;
       pointer-events:none;
       mask-image: linear-gradient(90deg, rgba(0,0,0,.85), rgba(0,0,0,0));
     }
     .heroInner{
       position:relative;
-      padding:46px 26px 34px;
+      padding:46px 26px 30px;
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap:18px;
@@ -137,7 +138,7 @@
     }
     h1{
       margin:0 0 12px;
-      font-size:44px;
+      font-size:42px;
       line-height:1.1;
       letter-spacing:-.6px;
     }
@@ -145,15 +146,25 @@
       margin:0 0 18px;
       color:var(--muted);
       font-size:17px;
-      max-width:62ch;
+      max-width:70ch;
     }
     .heroActions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .heroNote{
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(232,238,252,.85);
+      font-size:12.5px;
+      background:rgba(255,255,255,.03);
       margin-top:14px;
-      color:rgba(169,180,204,.9);
-      font-size:13px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      box-shadow:0 0 0 5px rgba(122,162,255,.12);
     }
 
+    /* right-side summary card */
     .heroAside{
       border-radius:16px;
       border:1px solid var(--line);
@@ -166,80 +177,33 @@
       align-items:flex-start;
     }
     .asideRow:last-child{border-bottom:none}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(232,238,252,.85);
-      font-size:12.5px;
-      background:rgba(255,255,255,.03);
-    }
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background:linear-gradient(135deg,var(--blue),var(--blue2));
-      box-shadow:0 0 0 5px rgba(122,162,255,.12);
-    }
     .asideRow b{display:block; font-size:13px}
     .asideRow span{display:block; color:var(--muted); font-size:12.5px; margin-top:2px}
 
-    /* CARDS */
-    .cards{
-      margin-top:-22px; /* overlap like the reference */
-      padding:0 14px;
-    }
-    .cardsGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .card{
+    /* panels */
+    .panel{
       border-radius:18px;
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-      padding:16px 16px 14px;
-      min-height:168px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+      padding:18px;
     }
-    .iconWrap{
-      width:46px; height:46px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.18);
-      display:grid; place-items:center;
-      margin-bottom:10px;
-    }
-    .card h3{
-      margin:0 0 6px;
-      font-size:17px;
-      letter-spacing:-.2px;
-    }
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:14.5px;
-    }
-
-    /* SECTIONS */
-    .section{
-      margin-top:34px;
-      border-top:1px solid rgba(255,255,255,.08);
-      padding-top:26px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-    }
-    .section h2{
+    .sectionWrap{margin-top:18px}
+    .sectionTitle{
       margin:0 0 10px;
       font-size:18px;
       letter-spacing:-.2px;
     }
+    .muted{color:var(--muted)}
     .list{
       margin:10px 0 0 18px;
       color:var(--muted);
     }
     .list li{margin:8px 0}
 
+    /* contact */
     .contact{
-      margin-top:26px;
+      margin-top:14px;
       border-radius:18px;
       border:1px solid var(--line);
       background:rgba(0,0,0,.18);
@@ -247,23 +211,17 @@
       display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
       align-items:center;
     }
-    .contact .muted{color:var(--muted)}
+
     .footer{
-      margin-top:20px;
+      margin-top:18px;
       color:var(--muted);
       font-size:13px;
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
 
-    /* SVG icons */
-    svg{display:block}
-
     @media (max-width: 980px){
       .heroInner{grid-template-columns:1fr}
-      h1{font-size:36px}
-      .cardsGrid{grid-template-columns:1fr}
-      .section{grid-template-columns:1fr}
-      .cards{margin-top:14px}
+      h1{font-size:34px}
     }
   </style>
 </head>
@@ -277,165 +235,110 @@
         <div class="mark" aria-hidden="true"></div>
         <div class="brandTitle">
           <b>RGE Systems Inc.</b>
-          <span>Engineering Advisory • Contract Delivery • Reliability</span>
+          <span>High-Reliability Hardware • Safety-Critical Systems</span>
         </div>
       </div>
 
-      <div class="nav" aria-label="Primary navigation">
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#engagement">Engagement</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#services">Core areas</a>
+        <a href="#engage">How we engage</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
 
-      <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">GET IN TOUCH</a>
+      <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">GET IN TOUCH</a>
     </div>
 
-    <!-- HERO -->
-    <section class="hero" id="top">
+    <!-- HERO / ABOUT -->
+    <section class="hero" id="about">
       <div class="heroInner">
         <div>
-          <div class="eyebrow">ENGINEERING THAT DE-RISKS DELIVERY</div>
-          <h1>Mission-critical engineering services.</h1>
+          <div class="eyebrow">INDEPENDENT ENGINEERING CONSULTING PRACTICE</div>
+          <h1>High-reliability hardware systems for safety-critical applications.</h1>
+
           <p class="lead">
-            We help teams design, de-risk, and deliver complex systems where real-world constraints matter:
-            reliability, integration, safety, and documentation that survives audits and handoffs.
+            Established in 2012, RGE Systems Inc. is an independent engineering consulting practice focused on the
+            development of high-reliability hardware systems for safety-critical applications, meeting demanding
+            robustness and regulatory requirements. The practice draws on extensive experience across aerospace,
+            defense &amp; security, life sciences, and other advanced technology sectors.
           </p>
 
           <div class="heroActions">
-            <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Start%20a%20Project">Start a project</a>
-            <a class="btn ghost" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Advisory%20Request">Request advisory</a>
-            <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">Start a conversation</a>
+            <a class="btn ghost" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
           </div>
 
-          <div class="heroNote">
-            <span class="pill"><span class="dot"></span> Remote-first • US-friendly contracts</span>
-          </div>
+          <div class="pill"><span class="dot"></span> Remote-first • Selective engagements • US-friendly contracts</div>
         </div>
 
         <aside class="heroAside" aria-label="Highlights">
           <div class="asideRow">
             <div class="dot" aria-hidden="true"></div>
             <div>
-              <b>Advisory & design reviews</b>
-              <span>Independent senior assessment, architecture, risk, and decision support.</span>
+              <b>Robustness & regulatory readiness</b>
+              <span>Designed for demanding environments and documentation expectations.</span>
             </div>
           </div>
           <div class="asideRow">
             <div class="dot" aria-hidden="true"></div>
             <div>
-              <b>Reliability & risk reduction</b>
-              <span>FMEA/DFMEA mindset, corrective actions, verification readiness.</span>
+              <b>Architecture → verification</b>
+              <span>End-to-end thinking from concept through V&amp;V.</span>
             </div>
           </div>
           <div class="asideRow">
             <div class="dot" aria-hidden="true"></div>
             <div>
-              <b>Contract delivery</b>
-              <span>Time-boxed execution with clear outputs and ownership of outcomes.</span>
+              <b>Cross-sector experience</b>
+              <span>Aerospace, defense &amp; security, life sciences, and advanced technology.</span>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- THREE FEATURE CARDS -->
-    <div class="cards" id="services">
-      <div class="cardsGrid">
-
-        <div class="card">
-          <div class="iconWrap" aria-hidden="true">
-            <!-- strategy icon -->
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-              <path d="M4 18V6" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 18H20" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M7 14l3-3 3 2 4-6" stroke="#66E3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M17 7h3v3" stroke="#66E3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>True engineering strategy</h3>
-          <p>
-            Align architecture, requirements, and verification so teams converge faster and avoid costly rework.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="iconWrap" aria-hidden="true">
-            <!-- goals icon -->
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-              <path d="M12 3v4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 21v-4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M3 12h4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M21 12h-4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="#66E3C4" stroke-width="2"/>
-              <path d="M12 12l2-1" stroke="#66E3C4" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Your delivery goals</h3>
-          <p>
-            We focus on what changes outcomes: reliability, integration, testability, and documentation readiness.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="iconWrap" aria-hidden="true">
-            <!-- operators icon -->
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-              <path d="M16 11a4 4 0 1 0-8 0" stroke="#66E3C4" stroke-width="2" stroke-linecap="round"/>
-              <path d="M6 21v-1a6 6 0 0 1 12 0v1" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M19 8h2" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M3 8h2" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Operators, not “slideware”</h3>
-          <p>
-            Clear scope, fast feedback loops, and pragmatic engineering that works in the field—remote or hybrid.
-          </p>
-        </div>
-
-      </div>
+    <!-- CORE AREAS (full-width) -->
+    <div class="sectionWrap" id="services">
+      <section class="panel">
+        <h2 class="sectionTitle">Core areas of work</h2>
+        <ul class="list">
+          <li>Mechanical system architecture and design ownership, encompassing electronics packaging, opto-mechanical design, and ruggedization for harsh operating environments</li>
+          <li>Technology Readiness Level (TRL) progression, from early stages through commercialization</li>
+          <li>System-level integration, verification, and validation</li>
+          <li>Design reviews and risk assessments, including Design Failure Modes and Effects Analysis (DFMEA)</li>
+          <li>VAVE initiatives supporting cost, manufacturability, and overall system value</li>
+          <li>Prototyping and manufacturing support</li>
+        </ul>
+      </section>
     </div>
 
-    <!-- LOWER SECTIONS -->
-    <div class="section" id="approach">
-      <div>
-        <h2>Services</h2>
-        <ul class="list">
-          <li>Architecture & design reviews (independent senior check)</li>
-          <li>Reliability, risk, and failure-mode thinking (FMEA/DFMEA)</li>
-          <li>Integration troubleshooting & root-cause analysis</li>
-          <li>Verification planning, test strategy, and readiness</li>
-          <li>Documentation packages: requirements → design → risk → test</li>
-        </ul>
-      </div>
-      <div>
-        <h2>How we engage</h2>
-        <ul class="list">
-          <li><b>Fixed-scope review:</b> time-boxed assessment + actionable plan</li>
-          <li><b>Advisory retainer:</b> ongoing senior guidance (weekly/biweekly)</li>
-          <li><b>Contract delivery:</b> multi-week execution with defined outputs</li>
-        </ul>
-        <p style="color:var(--muted); margin:12px 0 0;">
-          Remote-first. Open to US-based contracts. On-site possible if high leverage and scoped.
+    <!-- HOW WE ENGAGE (full-width) -->
+    <div class="sectionWrap" id="engage">
+      <section class="panel">
+        <h2 class="sectionTitle">How we engage</h2>
+        <p class="muted" style="margin:0;">
+          RGE Systems operates as a flexible platform for selective consulting, fractional technical engagement,
+          technology development, and venture initiatives.
         </p>
-      </div>
+      </section>
     </div>
 
-    <div class="contact" id="contact">
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
       <div>
-        <b style="display:block; font-size:16px; margin-bottom:4px;">Let’s talk scope and outcomes.</b>
-        <div class="muted">Send a short note with timeline, constraints, and what success looks like.</div>
+        <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
+        <div class="muted">Tell us what you’re building, the constraints that matter, and what success looks like. We’ll respond with next steps.</div>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">Email</a>
+        <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">Email</a>
         <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-    </div>
+    </section>
 
-    <div class="footer" id="engagement">
+    <div class="footer">
       <div>© <span id="y"></span> RGE Systems Inc.</div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#top">Back to top</a>
+        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#about">Back to top</a>
         <a class="btn" style="padding:7px 10px; border-radius:999px;" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
       </div>
     </div>
