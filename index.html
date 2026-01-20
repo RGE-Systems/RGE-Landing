@@ -1,255 +1,445 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RGE Systems — Mechanical & Systems Engineering services for mission-critical products. Design reviews, reliability, integration, and contract delivery." />
-  <title>RGE Systems — Mechanical & Systems Engineering Services</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="RGE Systems Inc. — Engineering advisory and contract delivery for mission-critical systems. Design reviews, reliability, integration, and execution support."/>
+  <title>RGE Systems Inc. — Engineering Advisory & Contract Delivery</title>
 
   <style>
     :root{
-      --bg:#0b0f17; --card:#101827; --text:#e8eefc; --muted:#a9b4cc;
-      --line:rgba(255,255,255,.10); --accent:#7aa2ff; --accent2:#66e3c4;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius:16px;
+      --bg:#0b0f17;
+      --surface:#0f1626;
+      --card:#111b2f;
+      --text:#e8eefc;
+      --muted:#a9b4cc;
+      --line:rgba(255,255,255,.10);
+
+      /* Your existing vibe */
+      --blue:#7AA2FF;
+      --blue2:#66E3C4;
+
+      /* “Cuesta-like” CTA accent (warm gold, modest) */
+      --cta:#f4c84f;
+      --ctaText:#1a1f2b;
+
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:22px;
+      --max:1120px;
     }
+
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 15% 10%, rgba(122,162,255,.22), transparent 60%),
-                  radial-gradient(900px 500px at 85% 30%, rgba(102,227,196,.18), transparent 55%),
-                  var(--bg);
+      margin:0;
+      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(1100px 520px at 18% 6%, rgba(122,162,255,.20), transparent 55%),
+        radial-gradient(900px 520px at 88% 28%, rgba(102,227,196,.14), transparent 55%),
+        var(--bg);
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1080px; margin:0 auto; padding:44px 20px 70px}
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:22px;
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:10px 0 18px;
     }
-    .brand{display:flex; align-items:center; gap:12px}
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:240px;
+    }
     .mark{
-      width:14px; height:14px; border-radius:99px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 0 7px rgba(122,162,255,.12);
-    }
-    .brand b{letter-spacing:.2px}
-    nav{display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:14px}
-    nav a{padding:7px 10px; border:1px solid transparent; border-radius:999px}
-    nav a:hover{border-color:var(--line); color:var(--text)}
-    .panel{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      width:40px; height:28px; border-radius:10px;
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:22px;
+      background:linear-gradient(135deg, rgba(122,162,255,.25), rgba(102,227,196,.18));
+      position:relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
-    .hero{
-      display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;
-      margin:18px 0 16px;
+    .mark:before{
+      content:"";
+      position:absolute; inset:6px 9px;
+      border-radius:7px;
+      border:1px solid rgba(255,255,255,.14);
     }
-    h1{margin:0 0 10px; font-size:40px; line-height:1.12; letter-spacing:-.6px}
-    .sub{margin:0 0 16px; color:var(--muted); font-size:17px}
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .brandTitle{display:flex; flex-direction:column}
+    .brandTitle b{letter-spacing:.2px}
+    .brandTitle span{color:var(--muted); font-size:12.5px}
+
+    .nav{
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+      color:var(--muted); font-size:14px;
+    }
+    .nav a{
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:999px;
+    }
+    .nav a:hover{border-color:var(--line); color:var(--text)}
+
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:11px 14px; border-radius:12px; border:1px solid var(--line);
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:12px;
+      border:1px solid var(--line);
       background:rgba(255,255,255,.04);
       font-weight:650;
     }
     .btn:hover{border-color:rgba(255,255,255,.22)}
-    .btn.primary{
-      background:linear-gradient(135deg, rgba(122,162,255,.95), rgba(102,227,196,.85));
-      color:#09101e; border-color:transparent;
+    .btn.cta{
+      border-color:transparent;
+      background:var(--cta);
+      color:var(--ctaText);
+      box-shadow: 0 16px 40px rgba(244,200,79,.18);
     }
-    .btn.primary:hover{filter:saturate(1.08) brightness(1.02)}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .chip{
-      font-size:13px; color:var(--muted);
-      padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+    .btn.cta:hover{filter:brightness(1.03)}
+    .btn.ghost{
+      background:rgba(255,255,255,.02);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      border-radius:var(--radius2);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        radial-gradient(900px 380px at 10% 10%, rgba(122,162,255,.16), transparent 60%),
+        radial-gradient(700px 300px at 85% 35%, rgba(102,227,196,.12), transparent 60%),
+        rgba(10,14,22,.75);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    /* subtle “consulting hero” texture */
+    .hero:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 16% 35%, rgba(255,255,255,.08) 0 1px, transparent 2px) 0 0/14px 14px;
+      opacity:.25;
+      pointer-events:none;
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+    }
+    .heroInner{
+      position:relative;
+      padding:46px 26px 34px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:center;
+    }
+    .eyebrow{
+      color:rgba(232,238,252,.75);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:44px;
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:17px;
+      max-width:62ch;
+    }
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .heroNote{
+      margin-top:14px;
+      color:rgba(169,180,204,.9);
+      font-size:13px;
+    }
+
+    .heroAside{
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      padding:16px;
+    }
+    .asideRow{
+      display:flex; gap:12px; padding:10px 8px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      align-items:flex-start;
+    }
+    .asideRow:last-child{border-bottom:none}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(232,238,252,.85);
+      font-size:12.5px;
       background:rgba(255,255,255,.03);
     }
-    .grid3{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:14px}
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
-    h2{margin:0 0 10px; font-size:18px}
-    .muted{color:var(--muted)}
-    ul{margin:10px 0 0 18px; color:var(--muted)}
-    li{margin:8px 0}
-    .kpi{display:grid; gap:12px}
-    .kpi .box{
-      padding:14px; border-radius:14px; border:1px solid var(--line);
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      box-shadow:0 0 0 5px rgba(122,162,255,.12);
+    }
+    .asideRow b{display:block; font-size:13px}
+    .asideRow span{display:block; color:var(--muted); font-size:12.5px; margin-top:2px}
+
+    /* CARDS */
+    .cards{
+      margin-top:-22px; /* overlap like the reference */
+      padding:0 14px;
+    }
+    .cardsGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      padding:16px 16px 14px;
+      min-height:168px;
+    }
+    .iconWrap{
+      width:46px; height:46px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.18);
+      display:grid; place-items:center;
+      margin-bottom:10px;
     }
-    .kpi b{display:block; font-size:14px}
-    .kpi span{color:var(--muted); font-size:13px}
-    .section{margin-top:16px}
+    .card h3{
+      margin:0 0 6px;
+      font-size:17px;
+      letter-spacing:-.2px;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14.5px;
+    }
+
+    /* SECTIONS */
+    .section{
+      margin-top:34px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:26px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .list{
+      margin:10px 0 0 18px;
+      color:var(--muted);
+    }
+    .list li{margin:8px 0}
+
+    .contact{
+      margin-top:26px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      padding:18px;
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .contact .muted{color:var(--muted)}
     .footer{
-      margin-top:28px; padding-top:18px; border-top:1px solid var(--line);
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      color:var(--muted); font-size:13px;
+      margin-top:20px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    .links{display:flex; gap:12px; flex-wrap:wrap}
-    .links a{border:1px solid var(--line); padding:7px 10px; border-radius:999px}
-    .links a:hover{color:var(--text)}
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      border:1px solid var(--line); border-radius:999px; padding:6px 10px;
-      background:rgba(255,255,255,.03); color:var(--muted); font-size:13px;
-    }
-    @media (max-width: 920px){
-      .hero{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      h1{font-size:34px}
+
+    /* SVG icons */
+    svg{display:block}
+
+    @media (max-width: 980px){
+      .heroInner{grid-template-columns:1fr}
+      h1{font-size:36px}
+      .cardsGrid{grid-template-columns:1fr}
+      .section{grid-template-columns:1fr}
+      .cards{margin-top:14px}
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
-        <div>
-          <b>RGE Systems</b>
-          <div class="muted" style="font-size:13px">Mechanical & Systems Engineering • Contract Delivery • Advisory</div>
+        <div class="brandTitle">
+          <b>RGE Systems Inc.</b>
+          <span>Engineering Advisory • Contract Delivery • Reliability</span>
         </div>
       </div>
-      <nav>
+
+      <div class="nav" aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#outcomes">Outcomes</a>
-        <a href="#engagements">Engagements</a>
+        <a href="#approach">Approach</a>
+        <a href="#engagement">Engagement</a>
         <a href="#contact">Contact</a>
-      </nav>
-    </header>
+      </div>
 
-    <div class="hero">
-      <section class="panel">
-        <div class="badge">Remote-first • US-friendly contracts</div>
-        <h1>Engineering services for products that can’t fail.</h1>
-        <p class="sub">
-          RGE Systems supports teams building mission-critical and real-world systems—where reliability,
-          safety, integration, and delivery discipline matter. We provide <b>advisory</b> and <b>hands-on execution</b>
-          from concept through verification and deployment.
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Project%20inquiry">Start a project</a>
-          <a class="btn" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Advisory%20request">Request advisory</a>
-          <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-
-        <div class="chips" aria-label="Key offerings">
-          <div class="chip">Design & architecture reviews</div>
-          <div class="chip">Reliability & risk reduction</div>
-          <div class="chip">System integration & troubleshooting</div>
-          <div class="chip">Compliance-ready documentation</div>
-        </div>
-
-        <div class="section" id="services">
-          <div class="grid2">
-            <div class="panel" style="box-shadow:none">
-              <h2>Advisory Services</h2>
-              <ul>
-                <li>Independent design review & technical direction</li>
-                <li>Reliability, risk, FMEA/DFMEA, safety-critical thinking</li>
-                <li>Root-cause analysis & corrective action strategy</li>
-                <li>Technical due diligence for scaling or investment decisions</li>
-              </ul>
-              <p class="muted" style="margin-top:10px;font-size:13px">
-                Best when you need senior judgment early to reduce risk and avoid costly rework.
-              </p>
-            </div>
-
-            <div class="panel" style="box-shadow:none">
-              <h2>Contract Delivery</h2>
-              <ul>
-                <li>Mechanical/system architecture & detailed design</li>
-                <li>Design for manufacturability & ruggedization</li>
-                <li>Verification planning, test strategy, and execution support</li>
-                <li>Documentation packages: requirements → BOM → drawings → risk → test</li>
-              </ul>
-              <p class="muted" style="margin-top:10px;font-size:13px">
-                Best when you need a senior engineer who owns outcomes, not just tasks.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <aside class="panel">
-        <div class="kpi">
-          <div class="box">
-            <b>Typical clients</b>
-            <span>Startups • scale-ups • SMEs • teams in transition • programs under time pressure.</span>
-          </div>
-          <div class="box">
-            <b>Best-fit work</b>
-            <span>Ambiguous requirements • reliability matters • integration headaches • tight timelines.</span>
-          </div>
-          <div class="box">
-            <b>How we work</b>
-            <span>Clear scope • fast feedback loops • documentation that survives handoffs.</span>
-          </div>
-        </div>
-
-        <div class="section" id="outcomes">
-          <h2>Outcomes we drive</h2>
-          <ul>
-            <li>Reduce technical risk and rework</li>
-            <li>Accelerate design convergence</li>
-            <li>Improve reliability and field robustness</li>
-            <li>Support compliance and verification readiness</li>
-          </ul>
-        </div>
-      </aside>
+      <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">GET IN TOUCH</a>
     </div>
 
-    <section class="panel" id="engagements">
-      <h2>Engagement models</h2>
-      <div class="grid3">
-        <div class="panel" style="box-shadow:none">
-          <h2>Fixed-scope review</h2>
-          <p class="muted" style="margin:0">
-            A time-boxed design / risk review with actionable findings and a decision-ready plan.
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="heroInner">
+        <div>
+          <div class="eyebrow">ENGINEERING THAT DE-RISKS DELIVERY</div>
+          <h1>Mission-critical engineering services.</h1>
+          <p class="lead">
+            We help teams design, de-risk, and deliver complex systems where real-world constraints matter:
+            reliability, integration, safety, and documentation that survives audits and handoffs.
           </p>
-        </div>
-        <div class="panel" style="box-shadow:none">
-          <h2>Retainer advisory</h2>
-          <p class="muted" style="margin:0">
-            Ongoing senior guidance for teams moving fast (weekly/biweekly touchpoints).
-          </p>
-        </div>
-        <div class="panel" style="box-shadow:none">
-          <h2>Contract delivery</h2>
-          <p class="muted" style="margin:0">
-            Multi-week or multi-month execution with defined outputs and ownership of outcomes.
-          </p>
-        </div>
-      </div>
 
-      <p class="muted" style="margin:14px 0 0">
-        Remote-first. Open to US-based contracts. On-site is possible if it’s high leverage and scoped.
-      </p>
+          <div class="heroActions">
+            <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Start%20a%20Project">Start a project</a>
+            <a class="btn ghost" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Advisory%20Request">Request advisory</a>
+            <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
+          <div class="heroNote">
+            <span class="pill"><span class="dot"></span> Remote-first • US-friendly contracts</span>
+          </div>
+        </div>
+
+        <aside class="heroAside" aria-label="Highlights">
+          <div class="asideRow">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <b>Advisory & design reviews</b>
+              <span>Independent senior assessment, architecture, risk, and decision support.</span>
+            </div>
+          </div>
+          <div class="asideRow">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <b>Reliability & risk reduction</b>
+              <span>FMEA/DFMEA mindset, corrective actions, verification readiness.</span>
+            </div>
+          </div>
+          <div class="asideRow">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <b>Contract delivery</b>
+              <span>Time-boxed execution with clear outputs and ownership of outcomes.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="panel section" id="contact">
-      <h2>Contact</h2>
-      <p class="muted" style="margin:0 0 12px">
-        Send a short note with scope, timeline, and what success looks like. We’ll reply with next steps.
-      </p>
-      <div class="ctaRow">
-        <a class="btn primary" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Project%20inquiry">Email RGE Systems</a>
+    <!-- THREE FEATURE CARDS -->
+    <div class="cards" id="services">
+      <div class="cardsGrid">
+
+        <div class="card">
+          <div class="iconWrap" aria-hidden="true">
+            <!-- strategy icon -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M4 18V6" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 18H20" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 14l3-3 3 2 4-6" stroke="#66E3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 7h3v3" stroke="#66E3C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>True engineering strategy</h3>
+          <p>
+            Align architecture, requirements, and verification so teams converge faster and avoid costly rework.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="iconWrap" aria-hidden="true">
+            <!-- goals icon -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 21v-4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M3 12h4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M21 12h-4" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="#66E3C4" stroke-width="2"/>
+              <path d="M12 12l2-1" stroke="#66E3C4" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Your delivery goals</h3>
+          <p>
+            We focus on what changes outcomes: reliability, integration, testability, and documentation readiness.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="iconWrap" aria-hidden="true">
+            <!-- operators icon -->
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M16 11a4 4 0 1 0-8 0" stroke="#66E3C4" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6 21v-1a6 6 0 0 1 12 0v1" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M19 8h2" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+              <path d="M3 8h2" stroke="#7AA2FF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Operators, not “slideware”</h3>
+          <p>
+            Clear scope, fast feedback loops, and pragmatic engineering that works in the field—remote or hybrid.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LOWER SECTIONS -->
+    <div class="section" id="approach">
+      <div>
+        <h2>Services</h2>
+        <ul class="list">
+          <li>Architecture & design reviews (independent senior check)</li>
+          <li>Reliability, risk, and failure-mode thinking (FMEA/DFMEA)</li>
+          <li>Integration troubleshooting & root-cause analysis</li>
+          <li>Verification planning, test strategy, and readiness</li>
+          <li>Documentation packages: requirements → design → risk → test</li>
+        </ul>
+      </div>
+      <div>
+        <h2>How we engage</h2>
+        <ul class="list">
+          <li><b>Fixed-scope review:</b> time-boxed assessment + actionable plan</li>
+          <li><b>Advisory retainer:</b> ongoing senior guidance (weekly/biweekly)</li>
+          <li><b>Contract delivery:</b> multi-week execution with defined outputs</li>
+        </ul>
+        <p style="color:var(--muted); margin:12px 0 0;">
+          Remote-first. Open to US-based contracts. On-site possible if high leverage and scoped.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact" id="contact">
+      <div>
+        <b style="display:block; font-size:16px; margin-bottom:4px;">Let’s talk scope and outcomes.</b>
+        <div class="muted">Send a short note with timeline, constraints, and what success looks like.</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">Email</a>
         <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-    </section>
+    </div>
 
-    <div class="footer">
-      <div>© <span id="y"></span> RGE Systems • Engineering services</div>
-      <div class="links">
-        <a href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
+    <div class="footer" id="engagement">
+      <div>© <span id="y"></span> RGE Systems Inc.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#top">Back to top</a>
+        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
       </div>
     </div>
+
   </div>
 
   <script>
