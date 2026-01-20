@@ -137,18 +137,23 @@
     }
     .heroInner{padding:52px 26px 42px}
 
-    h1{
+   h1{
   margin:0 0 14px;
   font-weight:650;
   line-height:1.1;
   letter-spacing:-0.5px;
-
-  /* key line */
-  font-size:clamp(32px, 3.4vw, 42px);
-
   color:#fff;
-  white-space:nowrap;   /* force single line */
+
+  /* responsive sizing */
+  font-size:clamp(28px, 3.2vw, 42px);
+
+  /* keep in container */
+  white-space:nowrap;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis; /* optional safety */
 }
+
 
     .lead{margin:0; color:var(--muted); font-size:17px}
     .lead + .lead{margin-top:14px}
