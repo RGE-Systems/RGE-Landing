@@ -9,19 +9,18 @@
   <style>
     :root{
       --bg:#0b0f17;
-      --surface:#0f1626;
-      --card:#111b2f;
       --text:#e8eefc;
       --muted:#a9b4cc;
       --line:rgba(255,255,255,.10);
 
-      /* bluish accents consistent with your prior HTML */
+      /* bluish / greenish accents */
       --blue:#7AA2FF;
-      --blue2:#66E3C4;
+      --teal:#66E3C4;
 
-      /* modest “consulting CTA” warm accent */
-      --cta:#f4c84f;
-      --ctaText:#1a1f2b;
+      /* CTA buttons: green-blue-ish */
+      --cta1: rgba(122,162,255,.95);
+      --cta2: rgba(102,227,196,.90);
+      --ctaText:#09101e;
 
       --shadow: 0 18px 55px rgba(0,0,0,.35);
       --radius:18px;
@@ -31,14 +30,19 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
+    /* Smooth background gradients (no sharp corner changes) */
     body{
       margin:0;
       font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1100px 520px at 18% 6%, rgba(122,162,255,.20), transparent 55%),
-        radial-gradient(900px 520px at 88% 28%, rgba(102,227,196,.14), transparent 55%),
-        var(--bg);
+        radial-gradient(1200px 700px at 18% 10%, rgba(122,162,255,.18), transparent 62%),
+        radial-gradient(1000px 640px at 86% 18%, rgba(102,227,196,.14), transparent 62%),
+        radial-gradient(900px 700px at 22% 92%, rgba(122,162,255,.10), transparent 68%),
+        radial-gradient(900px 700px at 88% 92%, rgba(102,227,196,.08), transparent 70%),
+        linear-gradient(180deg, #0b0f17 0%, #0a0e16 50%, #090d15 100%);
+      background-attachment: fixed;
     }
 
     a{color:inherit; text-decoration:none}
@@ -46,17 +50,22 @@
 
     /* top bar */
     .topbar{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
       padding:10px 0 18px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width:260px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:280px;
     }
     .mark{
       width:40px; height:28px; border-radius:10px;
       border:1px solid var(--line);
-      background:linear-gradient(135deg, rgba(122,162,255,.25), rgba(102,227,196,.18));
+      background:linear-gradient(135deg, rgba(122,162,255,.22), rgba(102,227,196,.16));
       position:relative;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
@@ -71,8 +80,14 @@
     .brandTitle span{color:var(--muted); font-size:12.5px}
 
     .nav{
-      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-      color:var(--muted); font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+      justify-content:center;
+      flex:1;
     }
     .nav a{
       padding:8px 10px;
@@ -84,20 +99,20 @@
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px; border-radius:12px;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.04);
       font-weight:650;
       white-space:nowrap;
     }
     .btn:hover{border-color:rgba(255,255,255,.22)}
+
     .btn.cta{
       border-color:transparent;
-      background:var(--cta);
+      background:linear-gradient(135deg, var(--cta1), var(--cta2));
       color:var(--ctaText);
-      box-shadow: 0 16px 40px rgba(244,200,79,.18);
+      box-shadow: 0 16px 40px rgba(122,162,255,.14);
     }
-    .btn.cta:hover{filter:brightness(1.03)}
-    .btn.ghost{background:rgba(255,255,255,.02)}
+    .btn.cta:hover{filter:brightness(1.02) saturate(1.05)}
 
     /* hero */
     .hero{
@@ -106,9 +121,9 @@
       border:1px solid var(--line);
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
-        radial-gradient(900px 380px at 10% 10%, rgba(122,162,255,.16), transparent 60%),
-        radial-gradient(700px 300px at 85% 35%, rgba(102,227,196,.12), transparent 60%),
-        rgba(10,14,22,.75);
+        radial-gradient(900px 420px at 12% 12%, rgba(122,162,255,.14), transparent 62%),
+        radial-gradient(780px 360px at 86% 30%, rgba(102,227,196,.11), transparent 62%),
+        rgba(10,14,22,.70);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
@@ -116,26 +131,25 @@
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(circle at 16% 35%, rgba(255,255,255,.08) 0 1px, transparent 2px) 0 0/14px 14px;
-      opacity:.22;
+        radial-gradient(circle at 16% 35%, rgba(255,255,255,.07) 0 1px, transparent 2px) 0 0/14px 14px;
+      opacity:.18;
       pointer-events:none;
-      mask-image: linear-gradient(90deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,0));
     }
+
+    /* Even distribution: single centered column with comfortable width */
     .heroInner{
       position:relative;
-      padding:46px 26px 30px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-      align-items:center;
+      padding:52px 26px 42px;
+      display:flex;
+      justify-content:center;
     }
-    .eyebrow{
-      color:rgba(232,238,252,.75);
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:10px;
+    .heroContent{
+      width:100%;
+      max-width:860px;
+      text-align:left;
     }
+
     h1{
       margin:0 0 12px;
       font-size:42px;
@@ -146,39 +160,14 @@
       margin:0 0 18px;
       color:var(--muted);
       font-size:17px;
-      max-width:70ch;
     }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(232,238,252,.85);
-      font-size:12.5px;
-      background:rgba(255,255,255,.03);
+    .heroActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
       margin-top:14px;
     }
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background:linear-gradient(135deg,var(--blue),var(--blue2));
-      box-shadow:0 0 0 5px rgba(122,162,255,.12);
-    }
-
-    /* right-side summary card */
-    .heroAside{
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.18);
-      padding:16px;
-    }
-    .asideRow{
-      display:flex; gap:12px; padding:10px 8px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      align-items:flex-start;
-    }
-    .asideRow:last-child{border-bottom:none}
-    .asideRow b{display:block; font-size:13px}
-    .asideRow span{display:block; color:var(--muted); font-size:12.5px; margin-top:2px}
 
     /* panels */
     .panel{
@@ -188,7 +177,15 @@
       box-shadow: 0 18px 45px rgba(0,0,0,.22);
       padding:18px;
     }
-    .sectionWrap{margin-top:18px}
+    .sectionWrap{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+    }
+    .sectionWrap .panel{
+      width:100%;
+      max-width:980px;
+    }
     .sectionTitle{
       margin:0 0 10px;
       font-size:18px;
@@ -206,9 +203,12 @@
       margin-top:14px;
       border-radius:18px;
       border:1px solid var(--line);
-      background:rgba(0,0,0,.18);
+      background:rgba(0,0,0,.16);
       padding:18px;
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
       align-items:center;
     }
 
@@ -216,12 +216,20 @@
       margin-top:18px;
       color:var(--muted);
       font-size:13px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      max-width:980px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     @media (max-width: 980px){
-      .heroInner{grid-template-columns:1fr}
       h1{font-size:34px}
+      .heroInner{padding:46px 18px 36px}
+      .footer{padding:0 2px}
+      .nav{justify-content:flex-start}
     }
   </style>
 </head>
@@ -230,12 +238,12 @@
   <div class="wrap">
 
     <!-- TOP BAR -->
-    <div class="topbar">
+    <div class="topbar" id="top">
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
         <div class="brandTitle">
           <b>RGE Systems Inc.</b>
-          <span>High-Reliability Hardware • Safety-Critical Systems</span>
+          <span>Where real-world needs meet innovation</span>
         </div>
       </div>
 
@@ -252,8 +260,7 @@
     <!-- HERO / ABOUT -->
     <section class="hero" id="about">
       <div class="heroInner">
-        <div>
-          <div class="eyebrow">INDEPENDENT ENGINEERING CONSULTING PRACTICE</div>
+        <div class="heroContent">
           <h1>High-reliability hardware systems for safety-critical applications.</h1>
 
           <p class="lead">
@@ -265,39 +272,12 @@
 
           <div class="heroActions">
             <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">Start a conversation</a>
-            <a class="btn ghost" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
           </div>
-
-          <div class="pill"><span class="dot"></span> Remote-first • Selective engagements • US-friendly contracts</div>
         </div>
-
-        <aside class="heroAside" aria-label="Highlights">
-          <div class="asideRow">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Robustness & regulatory readiness</b>
-              <span>Designed for demanding environments and documentation expectations.</span>
-            </div>
-          </div>
-          <div class="asideRow">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Architecture → verification</b>
-              <span>End-to-end thinking from concept through V&amp;V.</span>
-            </div>
-          </div>
-          <div class="asideRow">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Cross-sector experience</b>
-              <span>Aerospace, defense &amp; security, life sciences, and advanced technology.</span>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <!-- CORE AREAS (full-width) -->
+    <!-- CORE AREAS (full-width centered) -->
     <div class="sectionWrap" id="services">
       <section class="panel">
         <h2 class="sectionTitle">Core areas of work</h2>
@@ -312,7 +292,7 @@
       </section>
     </div>
 
-    <!-- HOW WE ENGAGE (full-width) -->
+    <!-- HOW WE ENGAGE (full-width centered) -->
     <div class="sectionWrap" id="engage">
       <section class="panel">
         <h2 class="sectionTitle">How we engage</h2>
@@ -324,21 +304,22 @@
     </div>
 
     <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div>
-        <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
-        <div class="muted">Tell us what you’re building, the constraints that matter, and what success looks like. We’ll respond with next steps.</div>
-      </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">Email</a>
-        <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </section>
+    <div class="sectionWrap">
+      <section class="contact" id="contact" style="max-width:980px; width:100%;">
+        <div>
+          <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
+          <div class="muted">Tell us what you’re building, the constraints that matter, and what success looks like. We’ll respond with next steps.</div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">Email</a>
+        </div>
+      </section>
+    </div>
 
     <div class="footer">
       <div>© <span id="y"></span> RGE Systems Inc.</div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#about">Back to top</a>
+        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#top">Back to top</a>
         <a class="btn" style="padding:7px 10px; border-radius:999px;" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
       </div>
     </div>
