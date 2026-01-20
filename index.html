@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Principal Mechanical & Systems Engineer — advisory and contract delivery for mission-critical systems." />
-  <title>NAME — Principal Mechanical & Systems Engineer</title>
+  <meta name="description" content="RGE Systems — Mechanical & Systems Engineering services for mission-critical products. Design reviews, reliability, integration, and contract delivery." />
+  <title>RGE Systems — Mechanical & Systems Engineering Services</title>
+
   <style>
     :root{
       --bg:#0b0f17; --card:#101827; --text:#e8eefc; --muted:#a9b4cc;
@@ -15,29 +16,26 @@
     *{box-sizing:border-box}
     body{
       margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(122,162,255,.22), transparent 60%),
-                  radial-gradient(900px 500px at 90% 30%, rgba(102,227,196,.18), transparent 55%),
+      background: radial-gradient(1200px 600px at 15% 10%, rgba(122,162,255,.22), transparent 60%),
+                  radial-gradient(900px 500px at 85% 30%, rgba(102,227,196,.18), transparent 55%),
                   var(--bg);
       color:var(--text);
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:980px; margin:0 auto; padding:48px 20px 70px}
+    .wrap{max-width:1080px; margin:0 auto; padding:44px 20px 70px}
     header{
-      display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:22px;
     }
     .brand{display:flex; align-items:center; gap:12px}
-    .dot{
-      width:12px; height:12px; border-radius:99px; background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 0 6px rgba(122,162,255,.12);
+    .mark{
+      width:14px; height:14px; border-radius:99px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 7px rgba(122,162,255,.12);
     }
     .brand b{letter-spacing:.2px}
-    nav{display:flex; gap:14px; flex-wrap:wrap; color:var(--muted); font-size:14px}
-    nav a{padding:6px 10px; border:1px solid transparent; border-radius:999px}
+    nav{display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:14px}
+    nav a{padding:7px 10px; border:1px solid transparent; border-radius:999px}
     nav a:hover{border-color:var(--line); color:var(--text)}
-    .hero{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch;
-      margin:26px 0 22px;
-    }
     .panel{
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--line);
@@ -45,20 +43,18 @@
       box-shadow:var(--shadow);
       padding:22px;
     }
-    h1{margin:0 0 10px; font-size:38px; line-height:1.15; letter-spacing:-.5px}
-    .sub{margin:0 0 18px; color:var(--muted); font-size:17px}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
-    .chip{
-      font-size:13px; color:var(--muted);
-      padding:6px 10px; border-radius:999px; border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+    .hero{
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;
+      margin:18px 0 16px;
     }
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    h1{margin:0 0 10px; font-size:40px; line-height:1.12; letter-spacing:-.6px}
+    .sub{margin:0 0 16px; color:var(--muted); font-size:17px}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding:11px 14px; border-radius:12px; border:1px solid var(--line);
       background:rgba(255,255,255,.04);
-      font-weight:600;
+      font-weight:650;
     }
     .btn:hover{border-color:rgba(255,255,255,.22)}
     .btn.primary{
@@ -66,32 +62,44 @@
       color:#09101e; border-color:transparent;
     }
     .btn.primary:hover{filter:saturate(1.08) brightness(1.02)}
-    .kpi{
-      display:grid; grid-template-columns:1fr; gap:12px;
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      font-size:13px; color:var(--muted);
+      padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
     }
+    .grid3{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:14px}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
+    h2{margin:0 0 10px; font-size:18px}
+    .muted{color:var(--muted)}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:8px 0}
+    .kpi{display:grid; gap:12px}
     .kpi .box{
       padding:14px; border-radius:14px; border:1px solid var(--line);
       background:rgba(0,0,0,.18);
     }
     .kpi b{display:block; font-size:14px}
     .kpi span{color:var(--muted); font-size:13px}
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
-    h2{margin:0 0 10px; font-size:18px}
-    ul{margin:10px 0 0 18px; color:var(--muted)}
-    li{margin:8px 0}
     .section{margin-top:16px}
-    .muted{color:var(--muted)}
     .footer{
-      margin-top:34px; padding-top:18px; border-top:1px solid var(--line);
+      margin-top:28px; padding-top:18px; border-top:1px solid var(--line);
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
       color:var(--muted); font-size:13px;
     }
     .links{display:flex; gap:12px; flex-wrap:wrap}
     .links a{border:1px solid var(--line); padding:7px 10px; border-radius:999px}
     .links a:hover{color:var(--text)}
-    @media (max-width: 860px){
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid var(--line); border-radius:999px; padding:6px 10px;
+      background:rgba(255,255,255,.03); color:var(--muted); font-size:13px;
+    }
+    @media (max-width: 920px){
       .hero{grid-template-columns:1fr}
-      h1{font-size:32px}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      h1{font-size:34px}
     }
   </style>
 </head>
@@ -100,63 +108,68 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="dot" aria-hidden="true"></div>
-        <div><b>NAME</b><div class="muted" style="font-size:13px">Principal Mechanical & Systems Engineer</div></div>
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <b>RGE Systems</b>
+          <div class="muted" style="font-size:13px">Mechanical & Systems Engineering • Contract Delivery • Advisory</div>
+        </div>
       </div>
       <nav>
-        <a href="#how">How I help</a>
-        <a href="#focus">Focus areas</a>
-        <a href="#engagement">Engagement</a>
+        <a href="#services">Services</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#engagements">Engagements</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <div class="hero">
       <section class="panel">
-        <h1>Senior engineering judgment for mission-critical systems.</h1>
+        <div class="badge">Remote-first • US-friendly contracts</div>
+        <h1>Engineering services for products that can’t fail.</h1>
         <p class="sub">
-          I help teams design, de-risk, and deliver complex mechanical & systems engineering work —
-          available for <b>advisory</b> and <b>hands-on contract engagements</b> (remote, US-friendly).
+          RGE Systems supports teams building mission-critical and real-world systems—where reliability,
+          safety, integration, and delivery discipline matter. We provide <b>advisory</b> and <b>hands-on execution</b>
+          from concept through verification and deployment.
         </p>
 
         <div class="ctaRow">
-          <a class="btn primary" href="mailto:YOUR_EMAIL?subject=Advisory%20call%20request">Book an advisory call</a>
-          <a class="btn" href="mailto:YOUR_EMAIL?subject=Contract%20engagement%20discussion">Discuss a contract</a>
+          <a class="btn primary" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Project%20inquiry">Start a project</a>
+          <a class="btn" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Advisory%20request">Request advisory</a>
           <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
-        <div class="chips" aria-label="Key themes">
-          <div class="chip">Architecture & design reviews</div>
-          <div class="chip">Reliability / risk reduction</div>
+        <div class="chips" aria-label="Key offerings">
+          <div class="chip">Design & architecture reviews</div>
+          <div class="chip">Reliability & risk reduction</div>
           <div class="chip">System integration & troubleshooting</div>
-          <div class="chip">Regulated & real-world constraints</div>
+          <div class="chip">Compliance-ready documentation</div>
         </div>
 
-        <div class="section" id="how">
+        <div class="section" id="services">
           <div class="grid2">
             <div class="panel" style="box-shadow:none">
-              <h2>🧭 Advisory / Expert Support</h2>
+              <h2>Advisory Services</h2>
               <ul>
-                <li>Architecture & design reviews (independent senior check)</li>
-                <li>Reliability, risk, and failure-mode analysis</li>
-                <li>Technical due diligence / pre-scale assessments</li>
-                <li>Fractional technical leadership (time-boxed)</li>
+                <li>Independent design review & technical direction</li>
+                <li>Reliability, risk, FMEA/DFMEA, safety-critical thinking</li>
+                <li>Root-cause analysis & corrective action strategy</li>
+                <li>Technical due diligence for scaling or investment decisions</li>
               </ul>
               <p class="muted" style="margin-top:10px;font-size:13px">
-                Typical format: paid calls, fixed-scope reviews, or short advisory sprints.
+                Best when you need senior judgment early to reduce risk and avoid costly rework.
               </p>
             </div>
 
             <div class="panel" style="box-shadow:none">
-              <h2>⚙️ Contract Delivery</h2>
+              <h2>Contract Delivery</h2>
               <ul>
-                <li>System architecture & mechanical design</li>
-                <li>High-reliability / safety-critical development</li>
-                <li>Design for manufacturing, compliance, and scale</li>
-                <li>Complex system integration & root-cause problem solving</li>
+                <li>Mechanical/system architecture & detailed design</li>
+                <li>Design for manufacturability & ruggedization</li>
+                <li>Verification planning, test strategy, and execution support</li>
+                <li>Documentation packages: requirements → BOM → drawings → risk → test</li>
               </ul>
               <p class="muted" style="margin-top:10px;font-size:13px">
-                Typical format: multi-week or multi-month remote contracts.
+                Best when you need a senior engineer who owns outcomes, not just tasks.
               </p>
             </div>
           </div>
@@ -166,51 +179,72 @@
       <aside class="panel">
         <div class="kpi">
           <div class="box">
-            <b>What you get</b>
-            <span>Clear decisions, reduced risk, faster convergence — not busywork.</span>
+            <b>Typical clients</b>
+            <span>Startups • scale-ups • SMEs • teams in transition • programs under time pressure.</span>
           </div>
           <div class="box">
-            <b>Best-fit situations</b>
+            <b>Best-fit work</b>
             <span>Ambiguous requirements • reliability matters • integration headaches • tight timelines.</span>
           </div>
           <div class="box">
-            <b>Availability</b>
-            <span>Remote-first. Open to US-based contract work.</span>
+            <b>How we work</b>
+            <span>Clear scope • fast feedback loops • documentation that survives handoffs.</span>
           </div>
         </div>
 
-        <div class="section" id="focus">
-          <h2>Focus areas</h2>
-          <p class="muted" style="margin:0">
-            Aerospace-grade thinking • industrial environments • regulated products • advanced instrumentation.
-          </p>
-        </div>
-
-        <div class="section" id="engagement">
-          <h2>Engagement models</h2>
+        <div class="section" id="outcomes">
+          <h2>Outcomes we drive</h2>
           <ul>
-            <li>Hourly advisory</li>
-            <li>Fixed-scope technical review</li>
-            <li>Time-boxed contract engagement</li>
-            <li>Fractional leadership (limited)</li>
+            <li>Reduce technical risk and rework</li>
+            <li>Accelerate design convergence</li>
+            <li>Improve reliability and field robustness</li>
+            <li>Support compliance and verification readiness</li>
           </ul>
         </div>
       </aside>
     </div>
 
-    <section class="panel" id="contact">
+    <section class="panel" id="engagements">
+      <h2>Engagement models</h2>
+      <div class="grid3">
+        <div class="panel" style="box-shadow:none">
+          <h2>Fixed-scope review</h2>
+          <p class="muted" style="margin:0">
+            A time-boxed design / risk review with actionable findings and a decision-ready plan.
+          </p>
+        </div>
+        <div class="panel" style="box-shadow:none">
+          <h2>Retainer advisory</h2>
+          <p class="muted" style="margin:0">
+            Ongoing senior guidance for teams moving fast (weekly/biweekly touchpoints).
+          </p>
+        </div>
+        <div class="panel" style="box-shadow:none">
+          <h2>Contract delivery</h2>
+          <p class="muted" style="margin:0">
+            Multi-week or multi-month execution with defined outputs and ownership of outcomes.
+          </p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin:14px 0 0">
+        Remote-first. Open to US-based contracts. On-site is possible if it’s high leverage and scoped.
+      </p>
+    </section>
+
+    <section class="panel section" id="contact">
       <h2>Contact</h2>
       <p class="muted" style="margin:0 0 12px">
-        Send a short note with context, timeline, and what success looks like. I’ll reply with next steps.
+        Send a short note with scope, timeline, and what success looks like. We’ll reply with next steps.
       </p>
       <div class="ctaRow">
-        <a class="btn primary" href="mailto:YOUR_EMAIL?subject=Inquiry%20from%20website">Email me</a>
-        <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">Message on LinkedIn</a>
+        <a class="btn primary" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20—%20Project%20inquiry">Email RGE Systems</a>
+        <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </section>
 
     <div class="footer">
-      <div>© <span id="y"></span> NAME • Remote consulting</div>
+      <div>© <span id="y"></span> RGE Systems • Engineering services</div>
       <div class="links">
         <a href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
