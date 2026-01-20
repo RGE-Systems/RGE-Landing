@@ -21,8 +21,8 @@
       --radius:3px;                /* super minimal rounding */
 
       /* header geometry */
-      --brandH:38px;
-      --brandFont:38px;
+      --brandH:44px;
+      --brandFont:40px;
 
       /* body size reference */
       --bodySize:16px;             /* matches site base font */
@@ -60,12 +60,12 @@
     .brandStack{
       display:inline-block;
     }
-    .brandRow{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      width:fit-content;
-    }
+   .brandRow{
+  display:flex;
+  align-items:flex-start; /* top-align logo and text block */
+  gap:12px;
+  width:fit-content;
+}
 
     .logo{
       width:var(--brandH);
@@ -74,32 +74,29 @@
     }
 
     .brandText{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:var(--brandH);
-    }
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding-top:2px;        /* tiny nudge down (tweak 1–3px if needed) */
+}
 
     .brandTitle{
-      display:flex;
-      align-items:center;
-      font-size:var(--brandFont);
-      font-weight:650;
-      line-height:1;
-      white-space:nowrap;
-      letter-spacing:.2px;
-      color:#fff;
-    }
+  font-size:var(--brandFont);
+  font-weight:650;
+  line-height:1;          /* important: prevents extra ascent space */
+  white-space:nowrap;
+  letter-spacing:.2px;
+  color:#fff;
+}
 
     /* ✅ Tagline: white, body-size, placed under the wordmark only */
     .tagline{
-      margin-top:4px;
-      font-size:var(--bodySize);
-      line-height:1.2;
-      color:#ffffff;
-      letter-spacing:.01em;
-      white-space:nowrap;
-    }
+  margin-top:6px;
+  font-size:16px;
+  line-height:1.2;
+  color:#ffffff;
+  white-space:nowrap;
+}
 
     /* ✅ Menus same size as body text */
     .nav{
@@ -140,21 +137,19 @@
    h1{
   margin:0 0 14px;
   font-weight:650;
-  line-height:1.1;
-  letter-spacing:-0.5px;
+  line-height:1.12;
+  letter-spacing:-0.4px;
   color:#fff;
 
-  /* responsive sizing */
-  font-size:clamp(28px, 3.2vw, 42px);
+  /* smaller than wordmark */
+  font-size:clamp(28px, 2.6vw, 36px);
 
-  /* keep in container */
-  white-space:nowrap;
-  max-width:100%;
-  overflow:hidden;
-  text-overflow:ellipsis; /* optional safety */
+  /* keep inside container */
+  white-space:normal;     /* allow wrap */
+  overflow-wrap:anywhere; /* prevents edge overflow */
 }
 
-
+.hero{ overflow:hidden; }
     .lead{margin:0; color:var(--muted); font-size:17px}
     .lead + .lead{margin-top:14px}
 
