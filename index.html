@@ -26,6 +26,9 @@
       --radius:18px;
       --radius2:22px;
       --max:1120px;
+
+      /* unified container width */
+      --containerMax: 980px;
     }
 
     *{box-sizing:border-box}
@@ -51,43 +54,70 @@
     /* top bar */
     .topbar{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:14px;
       padding:10px 0 18px;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:280px;
+
+    /* Brand block: logo + text same height, tagline below spanning width */
+    .brandBlock{
+      display:grid;
+      grid-template-columns: 44px auto;
+      grid-template-rows: auto auto;
+      column-gap:12px;
+      row-gap:6px;
+      align-items:start;
+      min-width:320px;
     }
+
+    /* placeholder logo (same height as name block visually) */
     .mark{
-      width:40px; height:28px; border-radius:10px;
+      width:44px; height:44px;
+      border-radius:12px;
       border:1px solid var(--line);
       background:linear-gradient(135deg, rgba(122,162,255,.22), rgba(102,227,196,.16));
       position:relative;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      grid-column:1;
+      grid-row:1;
     }
     .mark:before{
       content:"";
-      position:absolute; inset:6px 9px;
-      border-radius:7px;
+      position:absolute; inset:8px 10px;
+      border-radius:9px;
       border:1px solid rgba(255,255,255,.14);
     }
-    .brandTitle{display:flex; flex-direction:column}
-    .brandTitle b{letter-spacing:.2px}
+
+    .brandTitle{
+      grid-column:2;
+      grid-row:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:44px; /* ensures same height as logo */
+    }
+    .brandTitle b{letter-spacing:.2px; line-height:1.15}
     .brandTitle span{color:var(--muted); font-size:12.5px}
 
+    .tagline{
+      grid-column:1 / span 2; /* spans logo + name width */
+      grid-row:2;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.02em;
+      padding-left:0;
+    }
+
     .nav{
+      margin-left:auto; /* push menus to the far right */
       display:flex;
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
       color:var(--muted);
       font-size:14px;
-      justify-content:center;
-      flex:1;
+      justify-content:flex-end;
     }
     .nav a{
       padding:8px 10px;
@@ -96,6 +126,7 @@
     }
     .nav a:hover{border-color:var(--line); color:var(--text)}
 
+    /* buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px; border-radius:12px;
@@ -113,6 +144,17 @@
       box-shadow: 0 16px 40px rgba(122,162,255,.14);
     }
     .btn.cta:hover{filter:brightness(1.02) saturate(1.05)}
+
+    /* unified container wrapper */
+    .sectionWrap{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--containerMax);
+    }
 
     /* hero */
     .hero{
@@ -137,17 +179,9 @@
       mask-image: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,0));
     }
 
-    /* Even distribution: single centered column with comfortable width */
     .heroInner{
       position:relative;
       padding:52px 26px 42px;
-      display:flex;
-      justify-content:center;
-    }
-    .heroContent{
-      width:100%;
-      max-width:860px;
-      text-align:left;
     }
 
     h1{
@@ -157,16 +191,12 @@
       letter-spacing:-.6px;
     }
     .lead{
-      margin:0 0 18px;
+      margin:0;
       color:var(--muted);
       font-size:17px;
     }
-    .heroActions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:14px;
+    .lead + .lead{
+      margin-top:14px; /* increased spacing between paragraphs */
     }
 
     /* panels */
@@ -176,15 +206,6 @@
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow: 0 18px 45px rgba(0,0,0,.22);
       padding:18px;
-    }
-    .sectionWrap{
-      margin-top:18px;
-      display:flex;
-      justify-content:center;
-    }
-    .sectionWrap .panel{
-      width:100%;
-      max-width:980px;
     }
     .sectionTitle{
       margin:0 0 10px;
@@ -200,7 +221,6 @@
 
     /* contact */
     .contact{
-      margin-top:14px;
       border-radius:18px;
       border:1px solid var(--line);
       background:rgba(0,0,0,.16);
@@ -220,15 +240,22 @@
       justify-content:space-between;
       gap:10px;
       flex-wrap:wrap;
-      max-width:980px;
+      max-width:var(--containerMax);
       margin-left:auto;
       margin-right:auto;
+    }
+
+    /* tiny mail icon sizing */
+    .iconMail{
+      width:18px; height:18px;
+      display:inline-block;
     }
 
     @media (max-width: 980px){
       h1{font-size:34px}
       .heroInner{padding:46px 18px 36px}
-      .footer{padding:0 2px}
+      .nav{justify-content:flex-start; margin-left:0}
+      .topbar{flex-direction:column; align-items:stretch}
       .nav{justify-content:flex-start}
     }
   </style>
@@ -239,12 +266,12 @@
 
     <!-- TOP BAR -->
     <div class="topbar" id="top">
-      <div class="brand">
+      <div class="brandBlock" aria-label="RGE Systems Inc. branding">
         <div class="mark" aria-hidden="true"></div>
         <div class="brandTitle">
           <b>RGE Systems Inc.</b>
-          <span>Where real-world needs meet innovation</span>
         </div>
+        <div class="tagline">Where real-world needs meet innovation</div>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
@@ -253,33 +280,31 @@
         <a href="#engage">How we engage</a>
         <a href="#contact">Contact</a>
       </nav>
-
-      <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">GET IN TOUCH</a>
     </div>
 
     <!-- HERO / ABOUT -->
-    <section class="hero" id="about">
-      <div class="heroInner">
-        <div class="heroContent">
+    <div class="sectionWrap">
+      <section class="hero container" id="about">
+        <div class="heroInner">
           <h1>High-reliability hardware systems for safety-critical applications.</h1>
 
           <p class="lead">
             Established in 2012, RGE Systems Inc. is an independent engineering consulting practice focused on the
             development of high-reliability hardware systems for safety-critical applications, meeting demanding
-            robustness and regulatory requirements. The practice draws on extensive experience across aerospace,
-            defense &amp; security, life sciences, and other advanced technology sectors.
+            robustness and regulatory requirements.
           </p>
 
-          <div class="heroActions">
-            <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Project%20Inquiry">Start a conversation</a>
-          </div>
+          <p class="lead">
+            The practice draws on extensive experience across aerospace, defense &amp; security, life sciences, and other
+            advanced technology sectors.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <!-- CORE AREAS (full-width centered) -->
+    <!-- CORE AREAS -->
     <div class="sectionWrap" id="services">
-      <section class="panel">
+      <section class="panel container">
         <h2 class="sectionTitle">Core areas of work</h2>
         <ul class="list">
           <li>Mechanical system architecture and design ownership, encompassing electronics packaging, opto-mechanical design, and ruggedization for harsh operating environments</li>
@@ -292,9 +317,9 @@
       </section>
     </div>
 
-    <!-- HOW WE ENGAGE (full-width centered) -->
+    <!-- HOW WE ENGAGE -->
     <div class="sectionWrap" id="engage">
-      <section class="panel">
+      <section class="panel container">
         <h2 class="sectionTitle">How we engage</h2>
         <p class="muted" style="margin:0;">
           RGE Systems operates as a flexible platform for selective consulting, fractional technical engagement,
@@ -305,13 +330,19 @@
 
     <!-- CONTACT -->
     <div class="sectionWrap">
-      <section class="contact" id="contact" style="max-width:980px; width:100%;">
+      <section class="contact container" id="contact">
         <div>
           <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
           <div class="muted">Tell us what you’re building, the constraints that matter, and what success looks like. We’ll respond with next steps.</div>
         </div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry">Email</a>
+          <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry" aria-label="Email RGE Systems Inc.">
+            <!-- envelope icon -->
+            <svg class="iconMail" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="#09101e" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="#09101e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </section>
     </div>
