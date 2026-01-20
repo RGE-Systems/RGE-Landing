@@ -8,7 +8,6 @@
 
   <style>
     :root{
-      --bg:#0b0f17;
       --text:#e8eefc;
       --muted:#a9b4cc;
       --line:rgba(255,255,255,.10);
@@ -17,7 +16,7 @@
       --blue:#7AA2FF;
       --teal:#66E3C4;
 
-      /* CTA buttons: green-blue-ish */
+      /* CTA button */
       --cta1: rgba(122,162,255,.95);
       --cta2: rgba(102,227,196,.90);
       --ctaText:#09101e;
@@ -25,16 +24,19 @@
       --shadow: 0 18px 55px rgba(0,0,0,.35);
       --radius:18px;
       --radius2:22px;
-      --max:1120px;
 
-      /* unified container width */
-      --containerMax: 980px;
+      --max:1120px;
+      --containerMax:980px;
+
+      /* KEY: Logo height = Wordmark height */
+      --brandH:38px;     /* logo height */
+      --brandFont:38px;  /* wordmark size */
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
 
-    /* Smooth background gradients (no sharp corner changes) */
+    /* Smooth background */
     body{
       margin:0;
       font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -51,7 +53,7 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
 
-    /* top bar */
+    /* TOP BAR */
     .topbar{
       display:flex;
       align-items:flex-start;
@@ -60,64 +62,69 @@
       padding:10px 0 18px;
     }
 
-    /* Brand block: logo + text same height, tagline below spanning width */
-    .brandBlock{
-      display:grid;
-      grid-template-columns: 44px auto;
-      grid-template-rows: auto auto;
-      column-gap:12px;
-      row-gap:6px;
-      align-items:start;
-      min-width:320px;
+    /* Brand stack is shrink-to-content so tagline width always equals logo+wordmark width */
+    .brandStack{
+      display:inline-block; /* critical for width equality */
+    }
+    .brandRow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      width:fit-content;
     }
 
-    /* placeholder logo (same height as name block visually) */
+    /* Stock/placeholder logo */
     .mark{
-      width:44px; height:44px;
+      width:var(--brandH);
+      height:var(--brandH);
       border-radius:12px;
       border:1px solid var(--line);
       background:linear-gradient(135deg, rgba(122,162,255,.22), rgba(102,227,196,.16));
       position:relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      grid-column:1;
-      grid-row:1;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      flex:0 0 auto;
     }
     .mark:before{
       content:"";
-      position:absolute; inset:8px 10px;
+      position:absolute;
+      inset:7px 9px;
       border-radius:9px;
       border:1px solid rgba(255,255,255,.14);
     }
 
+    /* Wordmark: same height as logo */
     .brandTitle{
-      grid-column:2;
-      grid-row:1;
+      height:var(--brandH);
       display:flex;
-      flex-direction:column;
-      justify-content:center;
-      min-height:44px; /* ensures same height as logo */
+      align-items:center;
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:var(--brandFont);
+      line-height:var(--brandH); /* keeps vertical rhythm tight */
+      white-space:nowrap;
     }
-    .brandTitle b{letter-spacing:.2px; line-height:1.15}
-    .brandTitle span{color:var(--muted); font-size:12.5px}
 
+    /* Tagline matches width of brandRow because it’s inside brandStack */
     .tagline{
-      grid-column:1 / span 2; /* spans logo + name width */
-      grid-row:2;
+      margin-top:6px;
+      width:100%;
       color:var(--muted);
       font-size:13px;
       letter-spacing:.02em;
-      padding-left:0;
+      text-align:left;
     }
 
+    /* NAV */
     .nav{
-      margin-left:auto; /* push menus to the far right */
+      margin-left:auto;
       display:flex;
-      align-items:center;
       gap:12px;
-      flex-wrap:wrap;
       color:var(--muted);
       font-size:14px;
       justify-content:flex-end;
+      flex-wrap:wrap;
+      align-items:center;
+      padding-top:6px;
     }
     .nav a{
       padding:8px 10px;
@@ -126,37 +133,11 @@
     }
     .nav a:hover{border-color:var(--line); color:var(--text)}
 
-    /* buttons */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px; border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      font-weight:650;
-      white-space:nowrap;
-    }
-    .btn:hover{border-color:rgba(255,255,255,.22)}
+    /* Shared container width */
+    .sectionWrap{margin-top:18px; display:flex; justify-content:center}
+    .container{width:100%; max-width:var(--containerMax)}
 
-    .btn.cta{
-      border-color:transparent;
-      background:linear-gradient(135deg, var(--cta1), var(--cta2));
-      color:var(--ctaText);
-      box-shadow: 0 16px 40px rgba(122,162,255,.14);
-    }
-    .btn.cta:hover{filter:brightness(1.02) saturate(1.05)}
-
-    /* unified container wrapper */
-    .sectionWrap{
-      margin-top:18px;
-      display:flex;
-      justify-content:center;
-    }
-    .container{
-      width:100%;
-      max-width:var(--containerMax);
-    }
-
-    /* hero */
+    /* HERO */
     .hero{
       position:relative;
       border-radius:var(--radius2);
@@ -178,48 +159,26 @@
       pointer-events:none;
       mask-image: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,0));
     }
+    .heroInner{position:relative; padding:52px 26px 42px}
 
-    .heroInner{
-      position:relative;
-      padding:52px 26px 42px;
-    }
+    h1{margin:0 0 12px; font-size:42px; line-height:1.1; letter-spacing:-.6px}
+    .lead{margin:0; color:var(--muted); font-size:17px}
+    .lead + .lead{margin-top:14px}
 
-    h1{
-      margin:0 0 12px;
-      font-size:42px;
-      line-height:1.1;
-      letter-spacing:-.6px;
-    }
-    .lead{
-      margin:0;
-      color:var(--muted);
-      font-size:17px;
-    }
-    .lead + .lead{
-      margin-top:14px; /* increased spacing between paragraphs */
-    }
-
-    /* panels */
+    /* PANELS */
     .panel{
       border-radius:18px;
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+      box-shadow:0 18px 45px rgba(0,0,0,.22);
       padding:18px;
     }
-    .sectionTitle{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.2px;
-    }
+    .sectionTitle{margin:0 0 10px; font-size:18px; letter-spacing:-.2px}
     .muted{color:var(--muted)}
-    .list{
-      margin:10px 0 0 18px;
-      color:var(--muted);
-    }
+    .list{margin:10px 0 0 18px; color:var(--muted)}
     .list li{margin:8px 0}
 
-    /* contact */
+    /* CONTACT */
     .contact{
       border-radius:18px;
       border:1px solid var(--line);
@@ -228,9 +187,24 @@
       display:flex;
       justify-content:space-between;
       gap:14px;
-      flex-wrap:wrap;
       align-items:center;
+      flex-wrap:wrap;
     }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(135deg,var(--cta1),var(--cta2));
+      color:var(--ctaText);
+      font-weight:750;
+      box-shadow: 0 16px 40px rgba(122,162,255,.14);
+    }
+    .btn:hover{filter:brightness(1.02) saturate(1.05)}
+    .iconMail{width:18px; height:18px; display:block}
 
     .footer{
       margin-top:18px;
@@ -245,18 +219,13 @@
       margin-right:auto;
     }
 
-    /* tiny mail icon sizing */
-    .iconMail{
-      width:18px; height:18px;
-      display:inline-block;
-    }
-
     @media (max-width: 980px){
       h1{font-size:34px}
       .heroInner{padding:46px 18px 36px}
-      .nav{justify-content:flex-start; margin-left:0}
       .topbar{flex-direction:column; align-items:stretch}
-      .nav{justify-content:flex-start}
+      .nav{margin-left:0; justify-content:flex-start}
+      .brandTitle{font-size:32px}
+      :root{ --brandH:34px; --brandFont:34px; }
     }
   </style>
 </head>
@@ -264,12 +233,12 @@
 <body>
   <div class="wrap">
 
-    <!-- TOP BAR -->
+    <!-- HEADER -->
     <div class="topbar" id="top">
-      <div class="brandBlock" aria-label="RGE Systems Inc. branding">
-        <div class="mark" aria-hidden="true"></div>
-        <div class="brandTitle">
-          <b>RGE Systems Inc.</b>
+      <div class="brandStack" aria-label="RGE Systems Inc. branding">
+        <div class="brandRow">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brandTitle">RGE Systems Inc.</div>
         </div>
         <div class="tagline">Where real-world needs meet innovation</div>
       </div>
@@ -282,7 +251,7 @@
       </nav>
     </div>
 
-    <!-- HERO / ABOUT -->
+    <!-- ABOUT -->
     <div class="sectionWrap">
       <section class="hero container" id="about">
         <div class="heroInner">
@@ -335,23 +304,22 @@
           <b style="display:block; font-size:16px; margin-bottom:4px;">Contact us</b>
           <div class="muted">Tell us what you’re building, the constraints that matter, and what success looks like. We’ll respond with next steps.</div>
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn cta" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry" aria-label="Email RGE Systems Inc.">
-            <!-- envelope icon -->
-            <svg class="iconMail" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="#09101e" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="#09101e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
+
+        <a class="btn" href="mailto:YOUR_EMAIL?subject=RGE%20Systems%20Inc.%20—%20Inquiry" aria-label="Email RGE Systems Inc.">
+          <svg class="iconMail" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" stroke="#09101e" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M5.5 7.5 12 12.2l6.5-4.7" stroke="#09101e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </section>
     </div>
 
     <div class="footer">
       <div>© <span id="y"></span> RGE Systems Inc.</div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="#top">Back to top</a>
-        <a class="btn" style="padding:7px 10px; border-radius:999px;" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
+        <a href="#top" style="color:inherit; text-decoration:none;">Back to top</a>
+        <span>•</span>
+        <a href="mailto:YOUR_EMAIL" style="color:inherit; text-decoration:none;">YOUR_EMAIL</a>
       </div>
     </div>
 
