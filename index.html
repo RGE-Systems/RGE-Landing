@@ -21,9 +21,9 @@
       --radius:3px;
 
       /* Header sizing */
-      --logoSize:44px;     /* square icon size */
-      --brandFont:40px;    /* wordmark size (slightly smaller than logo) */
-      --tagFont:16px;      /* tagline size */
+      --logoSize:44px;
+      --brandFont:40px;
+      --tagFont:16px;
 
       /* Hero title (must fit one line) */
       --heroTitle:clamp(26px, 2.25vw, 34px);
@@ -57,7 +57,7 @@
       padding:10px 0 18px;
     }
 
-    /* ✅ Layout like attachment (1) */
+    /* ✅ Match screenshot: logo + stacked wordmark/tagline */
     .brandStack{
       display:flex;
       align-items:flex-start;
@@ -74,27 +74,26 @@
       display:flex;
       flex-direction:column;
       align-items:flex-start;
-      padding-top:2px; /* small optical alignment */
+      padding-top:4px;      /* slightly lower to match screenshot */
     }
 
     .brandTitle{
       font-size:var(--brandFont);
       font-weight:650;
-      line-height:1;         /* tighter top edge */
+      line-height:1.02;     /* a touch more natural than 1.00 */
       letter-spacing:.2px;
       color:#fff;
       white-space:nowrap;
     }
 
     .tagline{
-      margin-top:6px;
+      margin-top:4px;       /* tighter like screenshot */
       font-size:var(--tagFont);
-      line-height:1.2;
+      line-height:1.15;
       color:#fff;
       white-space:nowrap;
     }
 
-    /* Menus same size as body text */
     .nav{
       margin-left:auto;
       display:flex;
@@ -127,23 +126,29 @@
         radial-gradient(780px 360px at 86% 30%, rgba(102,227,196,.11), transparent 62%),
         rgba(10,14,22,.70);
       box-shadow:var(--shadow);
-      overflow:hidden; /* safety */
+      overflow:hidden; /* keep container edges crisp */
     }
-    .heroInner{padding:52px 26px 42px}
 
-    /* ✅ Force hero title to ONE line inside container */
+    /* ✅ Bring content slightly up (and give descenders room) */
+    .heroInner{
+      padding:46px 26px 42px; /* was 52px top; reduce to lift the title */
+    }
+
+    /* ✅ Fix descender clipping (g, y, p, etc.) */
     h1{
       margin:0 0 14px;
       font-weight:650;
-      line-height:1.12;
-      letter-spacing:-0.4px;
       color:#fff;
       font-size:var(--heroTitle);
+
+      line-height:1.18;       /* was 1.12 — prevents descender clipping */
+      padding-bottom:2px;     /* extra safety within the line box */
+      letter-spacing:-0.35px; /* slightly calmer */
 
       white-space:nowrap;
       max-width:100%;
       overflow:hidden;
-      text-overflow:clip; /* no ellipsis */
+      text-overflow:clip;
     }
 
     .lead{margin:0; color:var(--muted); font-size:17px}
@@ -185,7 +190,7 @@
       align-items:center;
       justify-content:center;
       padding:10px 14px;
-      border-radius:0;       /* sharp corners */
+      border-radius:0;
       background:#ffffff;
       border:1px solid #ffffff;
       cursor:pointer;
@@ -216,12 +221,12 @@
         --logoSize:40px;
         --brandFont:34px;
       }
-
-      /* On smaller screens, let title wrap rather than overflow */
+      /* on small screens, allow wrap instead of overflow */
       h1{
         white-space:normal;
         overflow:visible;
       }
+      .tagline{white-space:normal}
     }
   </style>
 </head>
