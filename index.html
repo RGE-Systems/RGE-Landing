@@ -23,6 +23,9 @@
       /* header geometry */
       --brandH:38px;
       --brandFont:38px;
+
+      /* body size reference */
+      --bodySize:16px;             /* matches site base font */
     }
 
     *{box-sizing:border-box}
@@ -30,7 +33,7 @@
 
     body{
       margin:0;
-      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font:var(--bodySize)/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
         radial-gradient(1200px 700px at 18% 10%, rgba(122,162,255,.18), transparent 62%),
@@ -53,8 +56,10 @@
       padding:10px 0 18px;
     }
 
-    /* Brand shrink-wraps so tagline width matches logo+wordmark */
-    .brandStack{display:inline-block}
+    /* Brand: tagline under wordmark only */
+    .brandStack{
+      display:inline-block;
+    }
     .brandRow{
       display:flex;
       align-items:center;
@@ -68,40 +73,40 @@
       flex:0 0 auto;
     }
 
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-height:var(--brandH);
+    }
+
     .brandTitle{
-      height:var(--brandH);
       display:flex;
       align-items:center;
       font-size:var(--brandFont);
       font-weight:650;
-      line-height:var(--brandH);
+      line-height:1;
       white-space:nowrap;
       letter-spacing:.2px;
       color:#fff;
     }
 
-    /* ✅ Tagline stretched across brand width */
+    /* ✅ Tagline: white, body-size, placed under the wordmark only */
     .tagline{
-      margin-top:6px;
-      width:100%;
+      margin-top:4px;
+      font-size:var(--bodySize);
+      line-height:1.2;
       color:#ffffff;
-      font-size:13px;
-      letter-spacing:.02em;
+      letter-spacing:.01em;
+      white-space:nowrap;
     }
-    .taglineStretch{
-      display:flex;
-      justify-content:space-between;   /* spreads words to full width */
-      width:100%;
-      white-space:nowrap;             /* keep it on one line */
-      gap:10px;                       /* fallback spacing if very narrow */
-    }
-    .taglineStretch span{display:block}
 
+    /* ✅ Menus same size as body text */
     .nav{
       margin-left:auto;
       display:flex;
       gap:12px;
-      font-size:14px;
+      font-size:var(--bodySize);
       color:var(--muted);
       align-items:center;
       padding-top:6px;
@@ -154,9 +159,9 @@
       margin:0 0 10px;
       font-size:18px;
       letter-spacing:-.2px;
-      color:#fff; /* titles white */
+      color:#fff;
     }
-    .muted{color:var(--muted)} /* body grey */
+    .muted{color:var(--muted)}
     .list{margin:10px 0 0 18px; color:var(--muted)}
     .list li{margin:8px 0}
 
@@ -207,15 +212,8 @@
       h1{font-size:34px}
       .topbar{flex-direction:column; align-items:stretch}
       .nav{margin-left:0; justify-content:flex-start}
-      .brandTitle{font-size:32px}
       :root{ --brandH:34px; --brandFont:34px; }
-      .taglineStretch{gap:8px}
-    }
-
-    /* If the screen is very narrow, allow wrapping to avoid ugly overlap */
-    @media (max-width: 420px){
-      .taglineStretch{white-space:normal; flex-wrap:wrap; justify-content:flex-start}
-      .taglineStretch span{margin-right:8px}
+      .tagline{white-space:normal}
     }
   </style>
 </head>
@@ -237,17 +235,9 @@
             <rect x="18" y="22" width="14" height="6" fill="#FFFFFF"/>
           </svg>
 
-          <div class="brandTitle">RGE Systems Inc.</div>
-        </div>
-
-        <!-- ✅ stretched tagline -->
-        <div class="tagline">
-          <div class="taglineStretch" aria-label="Tagline">
-            <span>Where</span>
-            <span>real-world</span>
-            <span>needs</span>
-            <span>meet</span>
-            <span>innovation</span>
+          <div class="brandText">
+            <div class="brandTitle">RGE Systems Inc.</div>
+            <div class="tagline">Where real-world needs meet innovation</div>
           </div>
         </div>
       </div>
@@ -264,7 +254,7 @@
     <div class="sectionWrap">
       <section class="hero container" id="about">
         <div class="heroInner">
-          <h1>High-reliability hardware systems for safety-critical applications.</h1>
+          <h1>Engineering Solutions for Advanced Technology Systems</h1>
 
           <p class="lead">
             Established in 2012, RGE Systems Inc. is an independent engineering consulting practice focused on the
