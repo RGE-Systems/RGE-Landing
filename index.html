@@ -59,38 +59,37 @@
 
     /* ✅ Match screenshot: logo + stacked wordmark/tagline */
     .brandStack{
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-    }
+  display:flex;
+  align-items:baseline;   /* ✅ key fix */
+  gap:12px;
+}
 
-    .logo{
-      width:var(--logoSize);
-      height:var(--logoSize);
-      flex:0 0 auto;
-    }
+  .logo{
+  width:var(--logoSize);
+  height:var(--logoSize);
+  flex:0 0 auto;
+  position:relative;
+  top:2px;   /* optical baseline correction */
+}
 
-   .brandText{
+.brandText{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  padding-top:1px;   /* was 4px — moves wordmark up */
+  padding-top:0;     /* remove previous padding hacks */
 }
 
-    .brandTitle{
-      font-size:var(--brandFont);
-      font-weight:650;
-      line-height:1.02;     /* a touch more natural than 1.00 */
-      letter-spacing:.2px;
-      color:#fff;
-      white-space:nowrap;
-    }
 
-    .tagline{
-  margin-top:3px;    /* was 4px — slightly tighter */
+    .brandTitle{
+  font-size:var(--brandFont);
+  font-weight:650;
+  line-height:1;
+  white-space:nowrap;
+}
+  .tagline{
+  margin-top:4px;
   font-size:var(--tagFont);
   line-height:1.15;
-  color:#fff;
   white-space:nowrap;
 }
 
