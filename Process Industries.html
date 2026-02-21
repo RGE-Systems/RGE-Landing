@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Mining solutions by RGE Systems: non-intrusive process monitoring and decision support."/>
+  <title>Mining Solutions | RGE Systems</title>
+
+  <style>
+    :root{
+      --text:#e8eefc;
+      --muted:#a9b4cc;
+      --line:rgba(255,255,255,.14);
+
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+
+      --max:1120px;
+      --containerMax:980px;
+
+      /* sharp look */
+      --radius:3px;
+
+      /* Header sizing */
+      --logoSize:50px;
+      --brandFont:36px;
+      --tagFont:16px;
+
+      /* Hero title (must fit one line) */
+      --heroTitle:clamp(26px, 2.25vw, 34px);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 18% 10%, rgba(122,162,255,.18), transparent 62%),
+        radial-gradient(1000px 640px at 86% 18%, rgba(102,227,196,.14), transparent 62%),
+        radial-gradient(900px 700px at 22% 92%, rgba(122,162,255,.10), transparent 68%),
+        radial-gradient(900px 700px at 88% 92%, rgba(102,227,196,.08), transparent 70%),
+        linear-gradient(180deg, #0b0f17 0%, #0a0e16 50%, #090d15 100%);
+      background-attachment: fixed;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 70px}
+
+    /* HEADER */
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      padding:10px 0 18px;
+    }
+
+    /* ✅ Match screenshot: logo + stacked wordmark/tagline */
+    .brandStack{
+  display:flex;
+  align-items:center;   /* ✅ key fix */
+  gap:12px;
+}
+
+  .logo{
+  width:var(--logoSize);
+  height:var(--logoSize);
+  flex:0 0 auto;
+}
+
+.brandText{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-top:0;     /* remove previous padding hacks */
+}
+
+
+    .brandTitle{
+  font-size:var(--brandFont);
+  font-weight:650;
+  line-height:1;
+  white-space:nowrap;
+}
+  .tagline{
+  margin-top:4px;
+  font-size:var(--tagFont);
+  line-height:1.15;
+  white-space:nowrap;
+}
+
+    .nav{
+      margin-left:auto;
+      display:flex;
+      gap:12px;
+      font-size:16px;
+      color:var(--muted);
+      align-items:center;
+      padding-top:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:999px;
+    }
+    .nav a:hover{border-color:var(--line); color:var(--text)}
+
+    /* Shared containers */
+    .sectionWrap{margin-top:18px; display:flex; justify-content:center}
+    .container{width:100%; max-width:var(--containerMax)}
+
+    /* HERO */
+    .hero{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        radial-gradient(900px 420px at 12% 12%, rgba(122,162,255,.14), transparent 62%),
+        radial-gradient(780px 360px at 86% 30%, rgba(102,227,196,.11), transparent 62%),
+        rgba(10,14,22,.70);
+      box-shadow:var(--shadow);
+      overflow:hidden; /* keep container edges crisp */
+      position:relative;
+      padding-bottom:8px;
+    }
+
+    /* ✅ Bring content slightly up (and give descenders room) */
+    .heroInner{
+      padding:46px 26px 42px; /* was 52px top; reduce to lift the title */
+    }
+
+    /* ✅ Fix descender clipping (g, y, p, etc.) */
+    h1{
+      margin:0 0 14px;
+      font-weight:650;
+      color:#fff;
+      font-size:var(--heroTitle);
+
+      line-height:1.18;       /* was 1.12 — prevents descender clipping */
+      padding-bottom:2px;     /* extra safety within the line box */
+      letter-spacing:-0.35px; /* slightly calmer */
+
+      white-space:nowrap;
+      max-width:100%;
+      overflow:hidden;
+      text-overflow:clip;
+    }
+
+    .lead{margin:0; color:var(--muted); font-size:17px}
+    .lead + .lead{margin-top:14px}
+
+    /* PANELS */
+    .panel{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:0 18px 45px rgba(0,0,0,.22);
+      padding:18px;
+      position:relative;
+      padding-bottom:40px;
+    }
+    .sectionTitle{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+      color:#fff;
+    }
+    .muted{color:var(--muted)}
+    .list{margin:10px 0 0 18px; color:var(--muted)}
+    .list li{margin:8px 0}
+  .nav a.active{
+  border-color: var(--line);
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+  }
+.process-section ul {
+  margin-top: 40px;
+}
+.lead + .list {
+  margin-top: 24px;
+}
+
+    /* CONTACT */
+    .contact{
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.16);
+      padding:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .contactEmail{
+  color: var(--text);
+  font-weight:600;
+  text-decoration:none;
+}
+
+.contactEmail:hover{
+  text-decoration:underline;
+}
+/* Process page contact panel */
+.processContact .pc-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.processContact .pc-ico{
+  width:20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+  opacity:.9;
+}
+.contactNote{
+  opacity: 0.75;
+  margin: 0;
+  margin-top: 0;
+}
+/* Hover underline for phone + WhatsApp (Process page) */
+.processContact .contactLink{
+  color: var(--text);
+  font-weight: 300;
+  text-decoration: none;
+  transition: opacity .15s ease;
+}
+
+.processContact .contactLink:hover,
+.processContact .contactLink:focus{
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  opacity: 1;
+}
+.processContact .pc-ico svg{ display:block; }
+
+.processContact .pc-muted{
+  color: var(--muted);
+}
+
+.processContact .pc-label{
+  color: var(--muted);
+}
+
+.processContact .pc-link{
+  color: var(--text);
+  font-weight:300;
+  text-decoration:none;
+}
+
+.processContact .pc-link:hover{
+  text-decoration:underline;
+}
+/* Fine optical alignment for email envelope */
+/* Envelope alignment (email row is the FIRST pc-row in your block) */
+.processContact .pc-row:first-of-type .pc-ico{
+  position: relative;
+  top: 2px;   /* move DOWN slightly */
+}
+/* Pull the voicemail note closer to the phone row */
+.processContact .pc-row + .pc-muted{
+  margin-top: 0px !important;   /* tighten upward */
+}
+/* Optional: slightly reduce space under the phone row */
+.processContact .pc-row{
+  margin-bottom: 0px;
+}
+
+/* =========================================
+   ICONS — muted like the rest of the panel
+   ========================================= */
+.processContact .pc-ico{
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  opacity: .65;              /* ← muted look */
+  color: var(--muted);       /* ← ensures stroke uses muted tone */
+}
+
+.processContact .pc-ico svg{
+  display:block;
+}
+
+/* =========================================
+   LOWER phone + WhatsApp icons slightly
+   (email envelope already tuned separately)
+   ========================================= */
+.processContact .pc-row:nth-of-type(2) .pc-ico{
+  position: relative;
+  top: 1px;                  /* ← gentle downward nudge */
+}
+
+/* =========================================
+   TIGHTEN space above voicemail note
+   ========================================= */
+.processContact .pc-row + .pc-muted{
+  margin-top: 0px !important;
+}
+
+/* Optional micro-tightening under phone row */
+.processContact .pc-row{
+  margin-bottom: 2px;
+}
+/* Base link styling (keeps consistency) */
+.processContact .pc-link{
+  color: var(--text);
+  font-weight: 300;
+  text-decoration: none;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+/* Hover state — subtle and professional */
+.processContact .pc-link:hover{
+  color: #ffffff;
+  text-decoration: underline;
+  opacity: .95;
+}
+
+/* Optional: slightly stronger hover on desktop only */
+@media (hover:hover){
+  .processContact .pc-link:hover{
+    opacity: 1;
+  }
+}
+.processContact .pc-link:hover,
+.processContact .pc-link:focus,
+.processContact .pc-link:active{
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  color: #ffffff;
+}  
+    .mailBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:0;
+      background:#ffffff;
+      border:1px solid #ffffff;
+      cursor:pointer;
+    }
+    .mailBtn svg{
+      width:24px;
+      height:24px;
+      stroke:#000000;
+    }
+
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      max-width:var(--containerMax);
+      margin-left:auto;
+      margin-right:auto;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .panelFooter{
+      position:absolute;
+      bottom:12px;
+      right:16px;
+      font-size:13px;
+      display:flex;
+      gap:20px;
+    }
+
+   .panelFooter a{
+     color:var(--muted);
+    }
+
+   .panelFooter a:hover{
+     color:var(--text);
+    }
+
+
+    @media (max-width: 980px){
+      .topbar{flex-direction:column; align-items:stretch}
+      .nav{margin-left:0; justify-content:flex-start}
+      :root{
+        --logoSize:40px;
+        --brandFont:34px;
+      }
+      /* on small screens, allow wrap instead of overflow */
+      h1{
+        white-space:normal;
+        overflow:visible;
+      }
+      .tagline{white-space:normal}
+    }
+    /* HERO CTA */
+.heroCtaRow{
+  margin-top:18px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.ctaBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;          /* subtle + executive */
+  border:1px solid var(--line); /* outline style */
+  background:transparent;
+  color:var(--text);
+  font-size:14px;
+  letter-spacing:.1px;
+}
+
+.ctaBtn:hover{
+  border-color:rgba(255,255,255,.28);
+}
+
+.ctaBtnPrimary{
+  border-color:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+}
+
+.ctaBtnPrimary:hover{
+  background:rgba(255,255,255,.12);
+}
+/* Back to Top — bottom right, subtle */
+.backToTopWrap{
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding: 0 18px;
+  text-align: right;
+}
+
+.backToTopLink{
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+.backToTopLink:hover{
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* Footer row — symmetrical layout */
+.footerRow{
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding: 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Back to Top styling */
+.backToTopLink{
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+.backToTopLink:hover{
+  color: #ffffff;
+  text-decoration: underline;
+}
+.footerRow{
+  max-width: var(--containerMax);
+  margin: 18px auto 0;
+  padding: 0;                 /* ❗ remove side padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.backToTopLink{
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.backToTopLink:hover{
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footerRow{
+  margin: 22px auto 0;   /* slightly more breathing room */
+}
+  </style>
+</head>
+
+<body id="top">
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div class="topbar" id="top">
+      <div class="brandStack">
+        <!-- OPTION A LOGO (all white, sharp) -->
+        <img src="logo.svg" alt="RGE Systems Logo" class="logo"/>
+
+
+        <div class="brandText">
+          <div class="brandTitle">RGE Systems</div>
+          <!-- <div class="tagline">Where real-world needs meet innovation</div> -->
+
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a> 
+        <a href="index.html#services">Core Expertise</a>
+        <a href="Process Industries.html"class="active">Process Industries</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+
+    <!-- HERO -->
+    <div class="sectionWrap">
+      <section class="hero container">
+        <div class="heroInner">
+          <h1>Operational Intelligence</h1>
+          <p class="lead">
+           RGE Systems applies proven methodologies developed within highly regulated sectors 
+           to provide direct, real-time insight into evolving process and operating conditions 
+           across complex industrial environments.
+          </p>
+          <p class="muted">
+          Relevant to mining & mineral processing, energy, chemical processing, pulp & paper, 
+          and other sectors where throughput, uptime, safety, and environmental impact are tightly coupled.
+          </p>
+          <!-- <p class="lead">
+            Supporting informed decisions related to throughput stability, process variability, 
+            and equipment reliability - without modification of core systems.
+          </p> -->
+          <!-- <div class="heroCtaRow">
+  
+  <a class="ctaBtn ctaBtnPrimary"
+   href="mailto:process@rgesystems.ca?subject=Operational%20Intelligence%20Discussion&body=[Please include your industry sector and operational context]">
+   Request Technical Discussion
+  </a>
+
+          </div> -->
+
+        </div>
+        <!-- <div class="panelFooter">
+           <a href="#top">Back to top</a>
+           <a href="index.html">Home</a>
+       </div> -->
+ 
+      </section>
+    </div>
+
+    <!-- CAPABILITIES -->
+    <div class="sectionWrap">
+      <section class="panel container">
+        <h2 class="sectionTitle">Operational Impact</h2>
+        <div class="capabilityBlock">
+        <p class="lead">By providing direct, real-time process insight and data validation, we enable:
+        </p>
+        <!--<p class="lead">
+            Current evaluation efforts center on:
+          </p> -->
+        
+          <ul class="list">
+            <li>Confident operational decision-making</li>
+            <li>Prediction and prevention of unplanned downtime and equipment failure</li>
+            <li>Increased throughput based on data-driven system optimization</li>
+        </ul>
+        <!-- <div class="panelFooter">
+          <a href="#top">Back to top</a>
+          <a href="index.html">Home</a>
+        </div> -->
+
+      </section>
+    </div>
+
+    <!-- FLEXIBILITY -->
+    <div class="sectionWrap">
+      <section class="panel container">
+        <h2 class="sectionTitle">Operational Alignment</h2>
+        <p class="lead">
+            Implementation principles:
+          </p> 
+        <ul class="list">
+          <li>Compatibility with existing process workflows and control environments</li>
+          <li>Seamless integration with existing instrumentation and network architectures</li>
+          <li>Evaluation without disruption to ongoing operations</li>
+        </ul>
+        <!-- <div class="panelFooter">
+          <a href="#top">Back to top</a>
+          <a href="index.html">Home</a>
+        </div> -->
+
+      </section>
+    </div>
+
+    <!-- STATUS -->
+    <div class="sectionWrap">
+      <section class="panel container">
+        <h2 class="sectionTitle">Current Status</h2>
+        <p class="muted">
+          The underlying methodology is commercially deployed across several highly regulated sectors, 
+          where early detection of evolving system conditions is critical to operational integrity.
+        </p>
+        <p class="muted">
+          RGE Systems is engaging with operators and OEM stakeholders across process industries to validate:
+        </p>
+        <ul class="list">
+          <li>Operational relevance</li>
+          <li>Deployment feasibility</li>
+          <li>Integration alignment</li>
+        </ul>
+        <!--<div class="panelFooter">
+          <a href="#top">Back to top</a>
+          <a href="index.html">Home</a>
+        </div> -->
+
+      </section>
+    </div>
+
+    <!-- CONTACT -->
+<div class="sectionWrap">
+  <section class="panel container processContact">
+    <h2 class="sectionTitle">Discuss Your Process Application</h2>
+<!-- <p class="pc-row pc-muted" style="margin: 10px 0 2px;">
+      <span class="pc-label">Process &amp; mining inquiries:</span>
+    </p> -->
+
+    <p class="pc-row" style="margin:0 0 16px;">
+      <span class="pc-ico" aria-hidden="true">
+        <!-- Envelope -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      <a class="pc-link" href="mailto:process@rgesystems.ca">process@rgesystems.ca</a>
+    </p>
+    <!-- <p class="pc-row pc-muted" style="margin:0 0 6px;">
+      <span class="pc-label">Direct (Call or WhatsApp):</span>
+    </p> -->
+
+    <p class="pc-row" style="margin:0 0 4px;">
+      <span class="pc-ico" aria-hidden="true">
+        <!-- Phone -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 3.5h3l1.2 5-2.1 1.2c1.4 2.7 3.6 4.9 6.3 6.3l1.2-2.1 5 1.2v3c0 1-0.7 1.9-1.7 2
+                   C10.5 22 2 13.5 2 5.2c0.1-1 1-1.7 2-1.7Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+      <span class="pc-ico" aria-hidden="true">
+        <!-- WhatsApp -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M20 11.5a8 8 0 0 1-12.1 6.9L4 19l.7-3.7A8 8 0 1 1 20 11.5Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M9.5 8.8c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.6c0 .3 0 .6-.5.8-.5.2-1.6.5-3.2-.2-1.6-.7-3.5-2.5-4.2-4.2-.7-1.6-.4-2.7-.2-3.2Z"
+                fill="currentColor"/>
+        </svg>
+      </span>
+
+      <a class="contactLink" href="tel:+1416XXXXXXX">+1 (416) 371-7132</a>
+      <span class="pc-muted">•</span>
+      <a class="contactLink" href="https://wa.me/1416XXXXXXX" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+    </p>
+
+    <!-- <p class="contactNote">
+      Voicemail and WhatsApp messages are returned promptly.
+    </p> -->
+
+    
+
+    <!-- <p class="pc-row pc-muted" style="margin: 10 0 0px">
+      <span class="pc-label">Location:</span> Greater Toronto Area, Canada
+    </p> -->
+  </section>
+</div>
+
+    <div class="footerRow">
+  <div class="footerLeft">© 2026 RGE Systems Inc.</div>
+  <a href="#top" class="backToTopLink">Back to Top ↑</a>
+</div>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
