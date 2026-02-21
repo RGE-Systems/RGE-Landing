@@ -61,7 +61,7 @@
     /* ✅ Match screenshot: logo + stacked wordmark/tagline */
     .brandStack{
   display:flex;
-  align-items:baseline;   /* ✅ key fix */
+  align-items:center;   /* ✅ key fix */
   gap:12px;
 }
 
@@ -69,8 +69,6 @@
   width:var(--logoSize);
   height:var(--logoSize);
   flex:0 0 auto;
-  position:relative;
-  top:22px;   /* optical baseline correction */
 }
 
 .brandText{
@@ -116,6 +114,12 @@
     .sectionWrap{margin-top:18px; display:flex; justify-content:center}
     .container{width:100%; max-width:var(--containerMax)}
 
+    .nav a.active{
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+
     /* HERO */
     .hero{
       border-radius:var(--radius);
@@ -127,6 +131,8 @@
         rgba(10,14,22,.70);
       box-shadow:var(--shadow);
       overflow:hidden; /* keep container edges crisp */
+      position:relative;
+      padding-bottom:40px;
     }
 
     /* ✅ Bring content slightly up (and give descenders room) */
@@ -161,6 +167,8 @@
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow:0 18px 45px rgba(0,0,0,.22);
       padding:18px;
+      padding-bottom:40px;
+      position:relative;
     }
     .sectionTitle{
       margin:0 0 10px;
@@ -172,6 +180,15 @@
     .list{margin:10px 0 0 18px; color:var(--muted)}
     .list li{margin:8px 0}
 
+    .subtleLink {
+       color: var(--text);
+       text-decoration: none;
+       font-weight: 500;
+    }
+
+    .subtleLink:hover {
+       text-decoration: underline;
+    }
     /* CONTACT */
     .contact{
       border-radius:var(--radius);
@@ -183,6 +200,8 @@
       gap:14px;
       align-items:center;
       flex-wrap:wrap;
+      position:relative;
+      padding-bottom:40px;
     }
 
     .mailBtn{
@@ -199,6 +218,10 @@
       width:24px;
       height:24px;
       stroke:#000000;
+
+    }
+    .capabilityBlock a:hover {
+      text-decoration: underline;
     }
 
     .footer{
@@ -214,6 +237,163 @@
       flex-wrap:wrap;
     }
 
+    .panelFooter{
+      position:absolute;
+      bottom:12px;
+      right:16px;
+      font-size:13px;
+      display:flex;
+      gap:20px;
+    }
+
+
+    .panelFooter a{
+      color:var(--muted);
+    }
+
+    .panelFooter a:hover{
+      color:var(--text);
+    }
+    .capabilityBlock{
+      margin-top:26px;
+    }
+
+    .capabilityTitle{
+     margin:12px 0 6px;
+     font-size:15px;
+     font-weight:600;
+     color:#fff;
+    }
+
+    .capabilityNote{
+     margin: 0 0 24px 18px;  /* bottom margin increases spacing */
+     font-size: 0.95em;
+     opacity: 0.8;             /* quiet */
+     line-height: 1.35;
+     color: var(--muted);
+     margin-left: 0px;  /* same as .list */
+    }
+/* Align icons + text on same baseline */
+.contact-row {
+  display: flex;
+  align-items: center;  /* fixes envelope/email alignment */
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;      /* keeps it from breaking badly on small screens */
+}
+
+.contact-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  opacity: 0.9;
+}
+
+.contact-sep {
+  opacity: 0.6;
+  margin: 0 4px;
+}
+
+/* Put the voicemail note on the same line but softer */
+.contact-note-inline {
+  opacity: 0.75;       /* your requested opacity */
+  margin-left: 12px;
+  white-space: nowrap; /* keeps it on one line when space allows */
+  font-size: 0.95em;
+}
+
+/* Optional: if it wraps awkwardly on narrow screens, allow it to drop */
+@media (max-width: 720px) {
+  .contact-note-inline {
+    white-space: normal;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+/* Force the Contact card to stack content vertically */
+.contact.contactHome{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+/* Keep rows nicely aligned */
+.contact-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.contact-ico{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  opacity: 0.9;
+}
+
+.contact-ico svg{ display:block; }
+/* Contact card typography consistency */
+.contactCard .contactText{
+  color: var(--muted);          /* match "How we engage" tone */
+  margin: 0 0 10px;
+}
+
+/* Make icons align perfectly with text baseline */
+.contactCard .contact-ico{
+  width: 20px;                  /* keeps envelope aligned with phone row */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.contactCard .contact-ico svg{ display:block; }  /* removes SVG baseline weirdness */
+
+/* Hover behavior for email/phone/WhatsApp */
+.contactCard .contactLink{
+  color: var(--text);
+  font-weight: 300;
+  text-decoration: none;
+}
+.contactCard .contactLink:hover{
+  text-decoration: underline;
+}
+
+/* Tighten gap between phone line and the note */
+.contactCard .contactNote{
+  margin: 2px 0 0;              /* smaller gap */
+  color: var(--muted);
+  opacity: 0.78;                /* softer, like your other container text */
+}
+.contact-sep{
+  opacity: 0.6;
+  margin: 0 6px;
+}
+
+.contact-note{
+  opacity: 0.75;
+  margin: 0;
+  margin-top: 0;
+}
+/* Fine-tune envelope only (email row) */
+.contactCard .contact-row:first-of-type .contact-ico{
+  position: relative;
+  top: 2px;   /* nudges envelope DOWN slightly */
+}
+    .subtleLink{
+     color: inherit;            /* stays quiet */
+     text-decoration: none;
+     font-weight: 650;          
+     opacity: 1;             
+    }
+
+    .subtleLink:hover{
+     text-decoration: underline;
+    }
     @media (max-width: 980px){
       .topbar{flex-direction:column; align-items:stretch}
       .nav{margin-left:0; justify-content:flex-start}
@@ -228,37 +408,57 @@
       }
       .tagline{white-space:normal}
     }
+    .footerRow{
+  max-width: var(--containerMax);
+  margin: 18px auto 0;
+  padding: 0;                 /* aligns to container edges */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.backToTopLink{
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.backToTopLink:hover{
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footerRow{
+  margin: 22px auto 0;   /* slightly more breathing room */
+}
   </style>
 </head>
 
-<body>
+<body id="top">
   <div class="wrap">
 
     <!-- HEADER -->
     <div class="topbar" id="top">
       <div class="brandStack">
         <!-- OPTION A LOGO (all white, sharp) -->
-        <svg class="logo" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="1.5" y="1.5" width="35" height="35" fill="none" stroke="#FFFFFF" stroke-width="2"/>
-          <rect x="6" y="6"  width="26" height="6" fill="#FFFFFF"/>
-          <rect x="6" y="14" width="16" height="6" fill="#FFFFFF"/>
-          <rect x="24" y="14" width="8"  height="6" fill="#FFFFFF"/>
-          <rect x="6" y="22" width="10" height="6" fill="#FFFFFF"/>
-          <rect x="18" y="22" width="14" height="6" fill="#FFFFFF"/>
-        </svg>
+        <img src="logo.svg" alt="RGE Systems Logo" class="logo"/>
+
 
         <div class="brandText">
-          <div class="brandTitle">RGE Systems Inc.</div>
-          <div class="tagline">Where real-world needs meet innovation</div>
+          <div class="brandTitle">RGE Systems</div>
+          <!-- <div class="tagline">Where real-world needs meet innovation</div> -->
+
         </div>
       </div>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#services">Core areas</a>
-        <a href="#engage">How we engage</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- <a href="index.html#about">About</a> -->
+  <a href="index.html#services">Core Expertise</a>
+  <a href="Process Industries.html">Process Industries</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
     </div>
 
     <!-- ABOUT -->
@@ -268,31 +468,73 @@
           <h1>Engineering Solutions for Advanced Technology Systems</h1>
 
           <p class="lead">
-            Established in 2012, RGE Systems Inc. is an independent engineering consulting practice focused on the
-            development of high-reliability hardware systems for safety-critical applications, meeting demanding
-            robustness and regulatory requirements.
+            Established in 2012, RGE Systems is an independent engineering firm 
+            focused on the development, integration, and commercialization of advanced technologies,
+            where where operational integrity, continuity, and risk control are critical.
           </p>
-
-          <p class="lead">
-            The practice draws on extensive experience across aerospace, defense &amp; security, life sciences, and other
-            advanced technology sectors.
-          </p>
+          <!-- <p class="lead">
+            Building on experience from aerospace, defense & security, life sciences, and other regulated industries, 
+            system-level rigor is applied within process industries where throughput, uptime, 
+            and operational continuity are critical.
+          </p> -->
         </div>
+        <!-- <div class="panelFooter">
+           <a href="#top">Back to top</a>
+        </div> -->
+
       </section>
     </div>
 
     <!-- CORE AREAS -->
     <div class="sectionWrap" id="services">
       <section class="panel container">
-        <h2 class="sectionTitle">Core areas of work</h2>
-        <ul class="list">
-          <li>Mechanical system architecture and design ownership, encompassing electronics packaging, opto-mechanical design, and ruggedization for harsh operating environments</li>
-          <li>Technology Readiness Level (TRL) progression, from early stages through commercialization</li>
-          <li>System-level integration, verification, and validation</li>
-          <li>Design reviews and risk assessments, including Design Failure Modes and Effects Analysis (DFMEA)</li>
-          <li>VAVE initiatives supporting cost, manufacturability, and overall system value</li>
-          <li>Prototyping and manufacturing support</li>
-        </ul>
+        <h2 class="sectionTitle">Core Expertise</h2>
+        <div class="capabilityBlock">
+  <h3 class="capabilityTitle">System Design & Integration</h3>
+  <ul class="list">
+    <li>Mechanical system architecture and lifecycle design ownership</li>
+    <li>Electro-mechanical and electro-optical system development and integration</li>
+    <li>Engineering for demanding and harsh operating environments</li>
+  </ul>
+</div>
+
+<div class="capabilityBlock">
+  <h3 class="capabilityTitle">Technology Development & Lifecycle Execution</h3>
+  <ul class="list">
+    <li>Technology Readiness Level (TRL) advancement from early stages through commercialization</li>
+    <li>Design reviews, risk assessments, and DFMEA</li>
+    <li>Verification and Validation planning and execution</li>
+    <li>Value Analysis / Value Engineering (VAVE) to optimize cost and manufacturability</li>
+  </ul>
+</div>
+
+<!-- <div class="capabilityBlock">
+  <h3 class="capabilityTitle">System Performance & Operational Integrity</h3>
+  <ul class="list">
+    <li>Value Analysis / Value Engineering (VAVE) to optimize cost and manufacturability</li>
+    <li>Quality-Cost-Performance trade-offs in integrated systems</li>
+  </ul>
+</div> --> 
+
+<div class="capabilityBlock">
+  <h3 class="capabilityTitle">Operational Intelligence & System Analytics</h3>
+  <p class="capabilityNote">Applied within
+     <a href="Process Industries.html" class="subtleLink">Process Industries</a>
+  </p>
+  <ul class="list">
+    <li>Direct, real-time system characterization</li>
+    <li>Data reconcilliation and uncertainty reduction in multi-sensor system</li>
+    <li>Early detection and prediction of performance-limiting conditions</li>
+  </ul>
+
+  <!--<p class="capabilityNote">Applied within process-intensive environments, including
+  <a href="Process Industries.html" class="subtleLink">Process Industries</a>.
+  </p> -->
+</div>
+        <!-- <div class="panelFooter">
+           <a href="#top">Back to top</a>
+        </div> -->
+
       </section>
     </div>
 
@@ -301,39 +543,71 @@
       <section class="panel container">
         <h2 class="sectionTitle">How we engage</h2>
         <p class="muted" style="margin:0;">
-          RGE Systems offers flexible engagement models tailored to the needs of each project.
+          RGE Systems offers flexible engagement models tailored to project requirements.
           We provide selective consulting, fractional technical leadership, hands-on technology development,
           and collaborative venture initiatives.
         </p>
+        <!-- <div class="panelFooter">
+          <a href="#top">Back to top</a>
+        </div> -->
+
       </section>
     </div>
 
-    <!-- CONTACT -->
-    <div class="sectionWrap">
-      <section class="contact container" id="contact">
-        <div>
-          <h2 class="sectionTitle" style="margin:0;">Contact Us</h2>
-          <div class="muted">Please include a brief description of the problem, key constraints, and the type of support required.</div>
-        </div>
+    <!-- CONTACT (Home) -->
+<div class="sectionWrap" id="contact">
+  <section class="panel container contactCard">
+    <h3 class="sectionTitle">Contact RGE Systems</h3>
 
-        <a class="mailBtn" href="mailto:info@rgesystems.ca?subject=RGE%20Systems%20Inquiry" aria-label="Email RGE Systems Inc.">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="0" stroke-width="2"/>
-            <path d="M3 7l9 6 9-6" stroke-width="2"/>
-          </svg>
-        </a>
-      </section>
-    </div>
+    <p class="contact-row contactText">
+      <span class="contact-ico" aria-hidden="true">
+        <!-- Envelope -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      <a class="contactLink" href="mailto:info@rgesystems.ca">info@rgesystems.ca</a>
+    </p>
 
-    <div class="footer">
-      <div>© <span id="y"></span> RGE Systems Inc.</div>
-      <div><a href="#top">Back to top</a></div>
-    </div>
+    <p class="contact-row contactText" style="margin-bottom:4px;">
+      <span class="contact-ico" aria-hidden="true">
+        <!-- Phone -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 3.5h3l1.2 5-2.1 1.2c1.4 2.7 3.6 4.9 6.3 6.3l1.2-2.1 5 1.2v3c0 1-0.7 1.9-1.7 2
+                   C10.5 22 2 13.5 2 5.2c0.1-1 1-1.7 2-1.7Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
 
+      <span class="contact-ico" aria-hidden="true">
+        <!-- WhatsApp -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M20 11.5a8 8 0 0 1-12.1 6.9L4 19l.7-3.7A8 8 0 1 1 20 11.5Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M9.5 8.8c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.2.4-.2.6-.1l1.7.7c.3.1.4.3.4.5v.6c0 .3 0 .6-.5.8-.5.2-1.6.5-3.2-.2-1.6-.7-3.5-2.5-4.2-4.2-.7-1.6-.4-2.7-.2-3.2Z"
+                fill="currentColor"/>
+        </svg>
+      </span>
+
+      <a class="contactLink" href="tel:+1416XXXXXXX">+1 (416) 371-7132</a>
+      <span class="contact-sep">•</span>
+      <a class="contactLink" href="https://wa.me/1416XXXXXXX" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+    </p>
+
+    <!-- <p class="contactNote">
+      Voicemail and WhatsApp messages are returned promptly.
+    </p> -->
+  </section>
+</div>
+
+<!-- Footer OUTSIDE the container -->
+<div class="footerRow">
+  <div>© 2026 RGE Systems Inc.</div>
+  <a href="#top" class="backToTopLink">Back to Top ↑</a>
+</div>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  
 </body>
 </html>
